@@ -1,5 +1,8 @@
 import React from "react";
 
+//Importo Icono
+import CartWidget from "../CartWidget/CartWidget.js"
+
 //Importamos componente
 import {Navbar, Nav, NavDropdown, Form, FormControl, Button} from "react-bootstrap"
 
@@ -12,6 +15,7 @@ export default function mostrarNavBar() {
     <div>
       <Navbar bg="light" expand="lg">
         <Navbar.Brand href="#home">UNIQUE</Navbar.Brand>
+        <Navbar.Brand href="#home" className="cart-widget"><CartWidget/></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
@@ -35,6 +39,7 @@ export default function mostrarNavBar() {
           </Form>
         </Navbar.Collapse>
       </Navbar>
+
     </div>
   );
 }

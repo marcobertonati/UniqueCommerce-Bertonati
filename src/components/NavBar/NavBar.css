@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap');
 
 .bg-light {
-    background-color: rosybrown!important;
+    background-color: rgb(159, 58, 75)!important;
 
 }
 
@@ -19,4 +19,8 @@ a.navbar-brand {
     color: rgb(53, 33, 33);;
     background-color: rgb(241, 224, 224)!important;
     border-color: rgb(53, 33, 33);;
+}
+
+.cart-widget {
+    width: 2rem;
 }
