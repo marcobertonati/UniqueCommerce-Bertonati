@@ -4,6 +4,9 @@ import NavBar from "../NavBar/NavBar";
 import {Container, Row, Col} from "react-bootstrap"
 import './ItemListContainer.css'
 
+//llamado a app
+import callApi from '../Api/ApiCall'
+
 export default function showHome(props) {
   return (
     <Container fluid className="background-home">
@@ -15,7 +18,7 @@ export default function showHome(props) {
       </Row>
 
       <Row className="background-description">
-        <Col><p>Lorem ipsum dolor sit amet consectetur adipiscing elit leo, nisl cum eget accumsan lacus molestie. At per laoreet primis porttitor mauris non varius turpis, sagittis taciti penatibus netus aenean fermentum viverra, tempor vitae fusce ante proin est ullamcorper. <br/>Molestie dapibus eros lobortis magnis lacinia lacus condimentum senectus habitant, quisque suspendisse ligula mollis aptent urna taciti elementum, sapien litora duis pharetra non cubilia torquent consequat.</p></Col>
+        <Col><h4>Chequeá todos nuestros productos 👇 </h4></Col>
 
       </Row>
 
