@@ -1,13 +1,9 @@
 import React from "react";
-import CartWidget from "../CartWidget/CartWidget";
-import NavBar from "../NavBar/NavBar";
 import {Container, Row, Col} from "react-bootstrap"
-import './ItemListContainer.css'
+import './HeaderContainer.css'
 
-//llamado a app
-import callApi from '../Api/ApiCall'
 
-export default function showHome(props) {
+export default function showHeader(props) {
   return (
     <Container fluid className="background-home">
       <Row>
@@ -16,20 +12,9 @@ export default function showHome(props) {
       <Row>
         <Col><h3>{props.greetings}! Donás más % de tu venta, mejor posicionado vas a estar. Agregamos valor a tus productos y tu marca.</h3></Col>
       </Row>
-
       <Row className="background-description">
         <Col><h4>Chequeá todos nuestros productos 👇 </h4></Col>
-
       </Row>
-
     </Container>
   );
 }
-
-// export default function showHome() {
-
-//     return(
-//         <NavBar/>
-//     )
-
-// }

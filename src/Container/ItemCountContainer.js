@@ -5,12 +5,13 @@ export default function ItemCountContainer() {
   const [item, setItem] = useState(1);
   const [stock, setStock] = useState(5);
 
+  useEffect( ()=> {
+    console.log('Se actualizó el componente de la botonera')
+  }, [item])
 
   function onIncrement() {
       if (stock > item) {
-          
           setItem(item + 1);
-
       } else {
           alert('No tenemos suficiente stock')
       }
