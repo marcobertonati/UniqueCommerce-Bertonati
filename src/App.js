@@ -1,8 +1,12 @@
 import "./App.css";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+
+//Componentes
 import NavBar from "./components/NavBar/NavBar";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import ItemListContainer from "./Container/ItemListContainer";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import ItemDetailContainer from './Container/ItemDetailContainer'
+
 
 function App() {
   return (
@@ -16,6 +20,7 @@ function App() {
         <Route exact path="/">
           <HeaderContainer />
           <ItemListContainer />
+          <ItemDetailContainer />
         </Route>
 
         {/* Ruta de solo lista de items */}

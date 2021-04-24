@@ -2,21 +2,29 @@
     {
         "id": 1,
         "title": "Anillo",
-        "description": "La descripción 1"
+        "price": 3000,
+        "description": "Un hermoso anillo que es de oro falso",
+        "photo":"https://es.wikipedia.org/wiki/Anillo_%C3%9Anico#/media/Archivo:Unico_Anello.png"
     },
     {
         "id": 2,
         "title": "Collar",
-        "description": "La descripción 2"
+        "price": 4000,
+        "description": "Un collar pesado como testigo de jehova",
+        "photo":"https://images-na.ssl-images-amazon.com/images/I/41HyJkv%2B4FL.__AC_SX300_SY300_QL70_FMwebp_.jpg"
     },
     {
         "id": 3,
         "title": "Remera",
-        "description": "La descripción 3"
+        "price": 2000,
+        "description": "Remera Ardidas más cara que la original",
+        "photo":"https://d3ugyf2ht6aenh.cloudfront.net/stores/906/459/products/t-rex1-3ff754ce865ab1fc6416002912422850-1024-1024.jpg"
     },
     {
         "id": 4,
         "title": "Gorra",
-        "description": "La descripción 4"
+        "price": 1000,
+        "description": "De esas que se ponen a 90° re tutumba",
+        "photo":"https://images-na.ssl-images-amazon.com/images/I/51X80iC%2BxcL._AC_UX385_.jpg"
     }
 ]

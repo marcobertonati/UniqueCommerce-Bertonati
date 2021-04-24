@@ -8,7 +8,7 @@ export default function showItem({title}) {
     <Card style={{ width: "18rem" }}>
       <Card.Img variant="top" src={ImgRing} />
       <Card.Body>
-        <Card.Title>Nombre del Producto:{title}</Card.Title>
+        <Card.Title>Nombre del Producto: {title}</Card.Title>
         <Card.Text>
           Esta sería la descripción de todo el producto.
         </Card.Text>
