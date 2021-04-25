@@ -12,7 +12,7 @@ export default function ShowItemListContainer() {
 
         // Simulamos un retraso de 2 segundos
         setTimeout(()=>{
-            fetch('https://raw.githubusercontent.com/marcobertonati/uniqueCatalogoMaps-Bertonati/main/src/Data/itemsJSON.json')
+            fetch('https://raw.githubusercontent.com/marcobertonati/uniqueDetail-Bertonati/main/src/Data/itemsJSON.json')
             .then(response=>response.json())
             .then(data=>{
                 // console.log(typeof(data))
