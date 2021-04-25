@@ -1,28 +1,28 @@
 [
     {
         "id": 1,
-        "title": "Anillo",
+        "title": "Anillo Único",
         "price": 3000,
         "description": "Un hermoso anillo que es de oro falso",
         "photo":"https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Unico_Anello.png/1024px-Unico_Anello.png"
     },
     {
         "id": 2,
-        "title": "Collar",
+        "title": "Collar de la Horda",
         "price": 4000,
         "description": "Un collar pesado como testigo de jehova",
         "photo":"https://images-na.ssl-images-amazon.com/images/I/41HyJkv%2B4FL.__AC_SX300_SY300_QL70_FMwebp_.jpg"
     },
     {
         "id": 3,
-        "title": "Remera",
+        "title": "Remera Disconnect",
         "price": 2000,
         "description": "Remera Ardidas más cara que la original",
         "photo":"https://d3ugyf2ht6aenh.cloudfront.net/stores/906/459/products/t-rex1-3ff754ce865ab1fc6416002912422850-1024-1024.jpg"
     },
     {
         "id": 4,
-        "title": "Gorra",
+        "title": "Gorra my little pony",
         "price": 1000,
         "description": "De esas que se ponen a 90° re tutumba",
         "photo":"https://images-na.ssl-images-amazon.com/images/I/51X80iC%2BxcL._AC_UX385_.jpg"
