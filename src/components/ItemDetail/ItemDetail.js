@@ -12,7 +12,7 @@ export default function ShowItemDetail({ arrayProducts }) {
         return (
           <div className="eachItemDetail" key={eachProduct.id}>
 
-              <img scr= {eachProduct.photo} alt={eachProduct.title}></img>
+              <img src= {eachProduct.photo} alt={eachProduct.title}></img>
 
             <ul>
               <li>{eachProduct.description}</li>
