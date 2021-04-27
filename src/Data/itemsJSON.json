@@ -27,7 +27,7 @@
         "id": 4,
         "idCategory": "gorras",
         "title": "Gorra my little pony",
-        "price": 1000,
+        "price": 2000,
         "description": "De esas que se ponen a 90° re tutumba",
         "photo":"https://images-na.ssl-images-amazon.com/images/I/51X80iC%2BxcL._AC_UX385_.jpg"
     },
@@ -43,7 +43,7 @@
         "id": 6,
         "idCategory": "collares",
         "title": "Collar de la Alianza",
-        "price": 4000,
+        "price": 5000,
         "description": "Un collar forjado con Mithrill de las montañas Úldum",
         "photo":"https://http2.mlstatic.com/D_NQ_NP_834244-MLM44821244193_022021-W.jpg"
     },
@@ -51,7 +51,7 @@
         "id": 7,
         "idCategory": "remeras",
         "title": "Remera ...And justice for all",
-        "price": 2000,
+        "price": 7000,
         "description": "Remera no apto para pecho frios",
         "photo":"https://d3ugyf2ht6aenh.cloudfront.net/stores/894/963/products/lnion1-91efcbe9e342ef792215867172539881-1024-1024.jpg"
     },
