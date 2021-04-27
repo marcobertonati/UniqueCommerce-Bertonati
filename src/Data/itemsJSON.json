@@ -1,6 +1,7 @@
 [
     {
         "id": 1,
+        "idCategory": "anillos",
         "title": "Anillo Único",
         "price": 3000,
         "description": "Un hermoso anillo que es de oro falso",
@@ -8,13 +9,15 @@
     },
     {
         "id": 2,
+        "idCategory": "collares",
         "title": "Collar de la Horda",
         "price": 4000,
-        "description": "Un collar pesado como testigo de jehova",
+        "description": "Un collar pesado forjado con cobalto de Minas Goroth",
         "photo":"https://images-na.ssl-images-amazon.com/images/I/41HyJkv%2B4FL.__AC_SX300_SY300_QL70_FMwebp_.jpg"
     },
     {
         "id": 3,
+        "idCategory": "remeras",
         "title": "Remera Disconnect",
         "price": 2000,
         "description": "Remera Ardidas más cara que la original",
@@ -22,9 +25,42 @@
     },
     {
         "id": 4,
+        "idCategory": "gorras",
         "title": "Gorra my little pony",
         "price": 1000,
         "description": "De esas que se ponen a 90° re tutumba",
         "photo":"https://images-na.ssl-images-amazon.com/images/I/51X80iC%2BxcL._AC_UX385_.jpg"
+    },
+    {
+        "id": 5,
+        "idCategory": "anillos",
+        "title": "Anillo de Huesos",
+        "price": 500,
+        "description": "Desconocemos el origen de este anillo, pero no tiene muy buena pinta",
+        "photo":"https://lavozdelmuro.net/wp-content/uploads/2014/11/anillos_creativos_35-1.jpg"
+    },
+    {
+        "id": 6,
+        "idCategory": "collares",
+        "title": "Collar de la Alianza",
+        "price": 4000,
+        "description": "Un collar forjado con Mithrill de las montañas Úldum",
+        "photo":"https://http2.mlstatic.com/D_NQ_NP_834244-MLM44821244193_022021-W.jpg"
+    },
+    {
+        "id": 7,
+        "idCategory": "remeras",
+        "title": "Remera ...And justice for all",
+        "price": 2000,
+        "description": "Remera no apto para pecho frios",
+        "photo":"https://d3ugyf2ht6aenh.cloudfront.net/stores/894/963/products/lnion1-91efcbe9e342ef792215867172539881-1024-1024.jpg"
+    },
+    {
+        "id": 8,
+        "idCategory": "gorras",
+        "title": "Gorro Vikingo",
+        "price": 1000,
+        "description": "Ideal para entrar al Valhalla",
+        "photo":"https://duendedeloshilos.es/wp-content/uploads/2018/02/gorro-vikingo-patron-crochet-3.jpg"
     }
 ]

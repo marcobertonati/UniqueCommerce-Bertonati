@@ -1,4 +1,5 @@
 import "./App.css";
+// Importamos React Router Dom
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 //Componentes
@@ -24,12 +25,12 @@ function App() {
         </Route>
 
         {/* Ruta de solo lista de items */}
-        <Route exact path="/item-list">
+        <Route exact path="/category/:id">
           <ItemListContainer />
         </Route>
 
         {/* Ruta de item en particular */}
-        <Route path="/item-list/:iditem">
+        <Route path="/item/:id">
           <ItemListContainer />
         </Route>
 
