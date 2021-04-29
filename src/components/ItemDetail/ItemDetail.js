@@ -1,5 +1,6 @@
 import React from "react";
 import "./ItemDetail.css";
+import ItemCountContainer from '../../Container/ItemCountContainer'
 
 
 export default function ItemDetail({ product }) {
@@ -18,6 +19,7 @@ export default function ItemDetail({ product }) {
               <li>¿Ta caro no? {product.price}</li>
             </ul>
           </div>
+        <ItemCountContainer/>
 
 
 

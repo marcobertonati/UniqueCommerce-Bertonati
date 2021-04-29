@@ -11,7 +11,7 @@ export default function ItemListContainer() {
     
     //useEffect si viene con url params
     useEffect(()=> {
-        
+
         if (categoryId===undefined) {
             getProducts
             .then(data=> {
@@ -26,8 +26,10 @@ export default function ItemListContainer() {
                 setItem(productsCategory)
             })
         }
-    }, [item]);
+    }, [categoryId]);
     // Sin esto de arriba no se actualzia el componente por lo cual si entro a /category/anillos, pero luego voy a /category/gorras se van a seguir viendo los anillos aunque esté parado en horra. El ITEM no se está actualizando, solo se monta
+
+    // PREGUNTA PORQUE TENGO QUE PONER EL CATEGORY EN LA LINEA 29 ( la que est{a entre [] ) Y NO EL ITEM. Pasa que si pongo el ITEM me crea un bucle infinito.
 
     //useEffect si viene undefined
     // useEffect(() => {
