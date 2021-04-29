@@ -1,5 +1,8 @@
 import React from "react";
 
+//Importamos React Rout Dom
+import { useHistory } from 'react-router-dom';
+
 //Importo Icono
 import CartWidget from "../CartWidget/CartWidget.js"
 
@@ -10,11 +13,16 @@ import {Navbar, Nav, NavDropdown, Form, FormControl, Button} from "react-bootstr
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './NavBar.css'
 
-export default function mostrarNavBar() {
+export default function MostrarNavBar() {
+
+  let history = useHistory()
+
   return (
-    <div>
+    
+    <div className="nav-bar">
       <Navbar bg="light" expand="lg">
-        <Navbar.Brand href="#home">UNIQUE</Navbar.Brand>
+        <Navbar.Brand onClick={()=>history.push('/')}>UNIQUE</Navbar.Brand>
+        {/* <Navbar.Brand onClick={()=>history.push('/')} href="#home">UNIQUE</Navbar.Brand> ASI VIENE DE FÁBRICA*/}
         <Navbar.Brand href="#home" className="cart-widget"><CartWidget/></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
@@ -22,15 +30,19 @@ export default function mostrarNavBar() {
             <Nav.Link href="#home">Nosotros</Nav.Link>
             <Nav.Link href="#link">Registrate</Nav.Link>
             <NavDropdown title="Productos" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Productos 1</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-              Productos 1
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Productos 1</NavDropdown.Item>
+
+              <NavDropdown.Item onClick={()=>history.push('/category/anillos')}>Anillos</NavDropdown.Item>
+              <NavDropdown.Item onClick={()=>history.push('/category/collares')}>Collares</NavDropdown.Item>
+              <NavDropdown.Item onClick={()=>history.push('/category/remeras')}>Remeras</NavDropdown.Item>
+              <NavDropdown.Item onClick={()=>history.push('/category/gorras')}>Gorras</NavDropdown.Item>
+        
+              {/* <NavDropdown.Item href="#action/3.4">Gorras</NavDropdown.Item> ESTA ES LA ESTRUCTURA BASE QUE VENIA*/}
+
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
+              <NavDropdown.Item href="#action/3.5">
                 ¿Cómo funciona la subasta?
               </NavDropdown.Item>
+
             </NavDropdown>
           </Nav>
           <Form inline>

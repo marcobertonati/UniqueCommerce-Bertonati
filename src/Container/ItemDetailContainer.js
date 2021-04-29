@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from "react";
+import {useParams} from 'react-router-dom'
 import ItemDetail from '../components/ItemDetail/ItemDetail'
 const {getIdProducts} = require('../Services/Services')
 
-export default function ShowItemDetailContainer() {
+
+
+export default function ItemDetailContainer() {
+
+    const { id } = useParams();
 
     const [itemDetail, setItemDetail] = useState([])
     
@@ -11,14 +16,14 @@ export default function ShowItemDetailContainer() {
         setTimeout(()=> {
             getIdProducts
             .then((data)=> {
-
-                const especificItem = data.find(product=> product.id === 2);
+                console.log(data);
+                console.log(id);
+                const especificItem = data.filter(product=> product.id === id);
+                console.log(especificItem)
                 setItemDetail(especificItem)
             })  
         })
     }, []);
-
-    // const {itemId} = useParams();
 
     return (
         <div className="itemDetailContainer">

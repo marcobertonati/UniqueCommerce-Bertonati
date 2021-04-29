@@ -1,7 +1,8 @@
 import React from "react";
 import "./ItemDetail.css";
 
-export default function ShowItemDetail({ product }) {
+
+export default function ItemDetail({ product }) {
   console.log(product);
 
   return (

@@ -7,6 +7,10 @@ import NavBar from "./components/NavBar/NavBar";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import ItemListContainer from "./Container/ItemListContainer";
 import ItemDetailContainer from './Container/ItemDetailContainer'
+import TestContainer from './Container/EventReactContainer'
+import AddEventListenerContainers from './Container/AddEventListenerContainers'
+import CustomInputContainer from './Container/CustomInputContainer'
+
 
 
 function App() {
@@ -16,22 +20,26 @@ function App() {
       <NavBar />
 
       <Switch>
-
         {/* Ruta de home */}
         <Route exact path="/">
           <HeaderContainer />
           <ItemListContainer />
-          <ItemDetailContainer />
+
+        {/* Componentes de prueba */}
+          {/* <TestContainer />
+          <AddEventListenerContainers />
+          <CustomInputContainer placeholder ="hola" />  */}
+
         </Route>
 
         {/* Ruta de solo lista de items */}
-        <Route exact path="/category/:id">
+        <Route exact path="/category/:categoryId">
           <ItemListContainer />
         </Route>
 
         {/* Ruta de item en particular */}
         <Route path="/item/:id">
-          <ItemListContainer />
+          <ItemDetailContainer />
         </Route>
 
         {/* Ruta si no estás logueado */}
