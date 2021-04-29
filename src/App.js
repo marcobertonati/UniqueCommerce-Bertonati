@@ -7,9 +7,9 @@ import NavBar from "./components/NavBar/NavBar";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import ItemListContainer from "./Container/ItemListContainer";
 import ItemDetailContainer from './Container/ItemDetailContainer'
-import TestContainer from './Container/EventReactContainer'
-import AddEventListenerContainers from './Container/AddEventListenerContainers'
-import CustomInputContainer from './Container/CustomInputContainer'
+// import TestContainer from './Container/EventReactContainer'
+// import AddEventListenerContainers from './Container/AddEventListenerContainers'
+// import CustomInputContainer from './Container/CustomInputContainer'
 
 
 

@@ -11,6 +11,7 @@ export default function ItemListContainer() {
     
     //useEffect si viene con url params
     useEffect(()=> {
+        
         if (categoryId===undefined) {
             getProducts
             .then(data=> {
