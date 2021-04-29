@@ -32,8 +32,7 @@ h4 {
 
 .background-home{
     background-image: url(./img/background-buying.jpg);
-    background-size:cover;
-
+    background-size:contain;
 }
 
 p {
@@ -47,6 +46,4 @@ p {
 
 .background-description{
     background-color: rgb(81, 81, 81);
-
-
 }

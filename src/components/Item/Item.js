@@ -7,9 +7,8 @@ export default function ShowItem({title, image, id}) {
 
   let history = useHistory();
 
-
   return (
-    <Card style={{ width: "18rem" }}>
+    <Card style={{ width: "18rem", margin: "4px 2px 2px 2px" }}>
       <Card.Img variant="top" src={image} />
       <Card.Body>
         <Card.Title>{title}</Card.Title>
@@ -17,7 +16,7 @@ export default function ShowItem({title, image, id}) {
           Esta sería la descripción de todo el producto.
         </Card.Text> */}
         <Button onClick={()=>history.push(`/item/${id}`)} variant="primary">Detalles del Producto</Button>
-        <ItemCountContainer/>
+        <ItemCountContainer />
       </Card.Body>
     </Card>
   );
