@@ -3,7 +3,7 @@
 // Llamado de petición fetch para TODO
 const getProducts = new Promise ((resolve,reject) => {
 
-    fetch('https://raw.githubusercontent.com/marcobertonati/uniqueDetail-Bertonati/main/src/Data/itemsJSON.json')
+    fetch('https://raw.githubusercontent.com/marcobertonati/UniqueCommerce-Bertonati/main/src/Data/itemsJSON.json')
         .then(response=>response.json())
         .then(data=>resolve(data))
         .catch(err=>reject(err))
@@ -14,7 +14,7 @@ const getProducts = new Promise ((resolve,reject) => {
 // Llamado de petición fetch para ID
 const getIdProducts = new Promise ((resolve,reject) => {
 
-    fetch('https://raw.githubusercontent.com/marcobertonati/uniqueDetail-Bertonati/main/src/Data/itemsJSON.json')
+    fetch('https://raw.githubusercontent.com/marcobertonati/UniqueCommerce-Bertonati/main/src/Data/itemsJSON.json')
         .then(response=>response.json())
         .then(data=>resolve(data))
         .catch(err=>reject(err))
