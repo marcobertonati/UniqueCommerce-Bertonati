@@ -21,7 +21,7 @@ git clone https://github.com/marcobertonati/uniqueDetail-Bertonati
 Una vez clonado solo deberás installar todas las dependencias:
 
 ```
-git install
+npm install
 ```
 
 ¡Perfecto! Ahora simplemente deberás ejecutar el proyecto:
