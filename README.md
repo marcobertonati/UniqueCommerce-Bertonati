@@ -15,7 +15,7 @@ Luego ejecuta una terminal y encuentrate parado en dicha carpeta.
 Clona este repositorio a través del siguiente comando:
 
 ```
-git clone https://github.com/marcobertonati/uniqueDetail-Bertonati
+git clone https://github.com/marcobertonati/UniqueCommerce-Bertonati
 ```
 
 Una vez clonado solo deberás installar todas las dependencias:
