@@ -2,11 +2,54 @@
 
 _UNIQUE es una plataforma e-commerce que busca ayudar a causas benéficas y a la vez a los/as vendedores._
 
+## Desarrollo 💻
+
+El desarrollo de la web es enteramente a partir de ReactJS. A su vez, consume el módulo de react-bootstrap 1.5.2 para fines estéticos y de organización visual. En un futuro se planea eliminar los componentes standar y desarrollar propios que respondan al branding de la marca.
+
+## ¿Cómo visualizar el proyecto? 💻
+
+¡Es muy simple! Crea una carpeta en tu escritorio con el nombre Unique. 
+
+Luego ejecuta una terminal y encuentrate parado en dicha carpeta. 
+
+Clona este repositorio a través del siguiente comando:
+
+```
+git clone https://github.com/marcobertonati/uniqueDetail-Bertonati
+```
+
+Una vez clonado solo deberás installar todas las dependencias:
+
+```
+git install
+```
+
+¡Perfecto! Ahora simplemente deberás ejecutar el proyecto:
+
+🚨 RECUERDA NO TENER NADA FUNCIONANDO EN EL PUERTO LOCALHOST:3000🚨
+
+```
+npm start
+```
+
+## Arquitectura 💡
+
+El proyecto se encuentra divido en componentes que se van a visualizar, y cotenedores que van a manejar toda la lógica y datos que van a pasar a través de props a sus componentes.
+Existen 2 grandes Containers:
+
+* ItemListContainer.js => El cuál renderiza tantas cards como items que retornan de una promesa fetch al 'servidor'.
+* ItemDetailContainer.js => Funciona de la misma manera que ItemListContainer, pero dicho contenedor solo renderiza un item en particular con todos los datos que trae de la promesa-fetch. Ese item en particular es tomado a partir del boton 'Ver Detalles/Descripción' y renderiza el componente ItemDetail.js
+
+## Lo que se viene 💡
+_En proceso..._ 🛠️
+* ¡Ya no solo podremos ver productos! También lo podremos agregar a un carrito.
+* Lo sabemos, estamos trabajando en su diseño para un mejor experiencia.
+
 ## Autores @marco.bertonati ✒️
 _Proyecto del curso de [ReactJS por Coderhouse](https://www.coderhouse.com/online/reactjs)_
 Camada-11370-online
-* **Luciano Calderon** - *Profesor del curso de ReactJS* 
-* **Alejandro Saez** - *Tutor de clase*
+* **Luciano Calderon** - *Profesor del curso de ReactJS* 👨🏻‍🏫
+* **Alejandro Saez** - *Tutor de clase* 👨‍💻
 
 <!-- # Getting Started with Create React App
 
