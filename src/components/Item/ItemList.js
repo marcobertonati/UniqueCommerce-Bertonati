@@ -4,7 +4,7 @@ import './ItemList.css'
 
 export default function ItemList({ item }) {
   return (
-    <div className="itemList">
+    <div className="itemList row container-fluid">
 
       {
       

@@ -7,17 +7,24 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import NavBar from "./components/NavBar/NavBar";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import ItemListContainer from "./Container/ItemListContainer";
-import ItemDetailContainer from './Container/ItemDetailContainer'
+import ItemDetailContainer from "./Container/ItemDetailContainer";
 
-//Componetes Testing
-// import TestContainer from './Container/EventReactContainer'
-// import AddEventListenerContainers from './Container/AddEventListenerContainers'
-// import CustomInputContainer from './Container/CustomInputContainer'
+//Contextos
+import {CartContext} from './Context/cartContext'
 
+//Componetes Testing: quizás sea esto molesto, pero me ayuda mucho para ir probando con clase en vivo.
+import TestContainer from "./Container/EventReactContainer";
+import AddEventListenerContainers from "./Container/AddEventListenerContainers";
+import CustomInputContainer from "./Container/CustomInputContainer";
+
+// Importo contexto de prueba
+import { AppContext } from "./Context/AppContext";
 
 function App() {
   return (
-    <BrowserRouter>
+
+    <CartContext.Provider value ={[]}>
+      <BrowserRouter>
       {/* El NavBar va a estar en todas las rutas */}
       <NavBar />
 
@@ -43,15 +50,19 @@ function App() {
           <HeaderContainer />
         </Route>
 
-        {/* Ruta de testing
+        {/* Ruta de testing */}
         <Route path="/testRoute">
-          <TestContainer />
+          <AppContext.Provider value={["pantalon", "pantuflas"]}>
+            <AddEventListenerContainers />
+          </AppContext.Provider>
+          {/* <TestContainer />
           <AddEventListenerContainers />
-          <CustomInputContainer placeholder ="hola" /> 
-        </Route> */}
-
+          <CustomInputContainer placeholder ="hola" />  */}
+        </Route>
       </Switch>
     </BrowserRouter>
+    </CartContext.Provider>
+
   );
 }
 export default App;

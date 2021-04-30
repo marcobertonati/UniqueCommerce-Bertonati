@@ -1,4 +1,14 @@
-# Getting Started with Create React App
+# UNIQUE 🛒
+
+_UNIQUE es una plataforma e-commerce que busca ayudar a causas benéficas y a la vez a los/as vendedores._
+
+## Autores @marco.bertonati ✒️
+_Proyecto del curso de [ReactJS por Coderhouse](https://www.coderhouse.com/online/reactjs)_
+Camada-11370-online
+* **Luciano Calderon** - *Profesor del curso de ReactJS* 
+* **Alejandro Saez** - *Tutor de clase*
+
+<!-- # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -67,4 +77,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 ### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify) -->

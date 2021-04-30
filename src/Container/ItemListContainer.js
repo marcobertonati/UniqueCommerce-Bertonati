@@ -38,7 +38,7 @@ export default function ItemListContainer() {
     // PREGUNTA PORQUE TENGO QUE PONER EL CATEGORY EN LA LINEA 29 ( la que est{a entre [] ) Y NO EL ITEM. Pasa que si pongo el ITEM me crea un bucle infinito.
 
     return (
-        <div className="itemListContainer">
+        <div className="itemListContainer container-fluid" style={{marginTop:'1rem'}}>
                <ItemList item={item}/>
         </div>
          

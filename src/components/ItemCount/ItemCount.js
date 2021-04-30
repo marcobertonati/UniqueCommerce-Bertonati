@@ -9,9 +9,7 @@ export default function showItemCount({
   itemNumber,
 }) {
   return (
-    <div className="productoCounter container-fluid">
-
-      <h5>Remera Coast</h5>
+    <div className="productoCounter">
       <ButtonGroup size="lg" className="mb-2">
         <Button onClick={onDecrement}>-</Button>
 
