@@ -8,9 +8,6 @@ export default function ItemCount({ onIncrement, onDecrement, itemQuantity, onAd
   // console.log(itemAdded)
   // console.log(itemQuantity)
 
-
-
-
   return (
     <div className="productoCounter">
       <ButtonGroup size="lg" className="mb-2">
