@@ -10,16 +10,13 @@ import { useHistory } from "react-router-dom";
 //Importo botones
 import { ButtonGroup, Button } from "react-bootstrap";
 
-
-
 //ACA EMPIEZA EL EXPORT
 export default function ItemDetail({ product }) {
-
   //CREO 2 ESTADOS
   // ESTADO PARA SABER QUE ITEMS AGREGUÉ AL CARRITO
   const [quantityProductsAdded, setQuantityProductsAdded] = useState([]);
 
-    // ¿AGREGUÉ ITEMS AL CARRITO? SI ES ASÍ, MOSTRAME EL TERMINAR COMPRA?
+  // ¿AGREGUÉ ITEMS AL CARRITO? SI ES ASÍ, MOSTRAME EL TERMINAR COMPRA?
   const [showFinishBuy, setshowFinishBuy] = useState(false);
 
   useEffect(() => {
@@ -32,12 +29,11 @@ export default function ItemDetail({ product }) {
   let history = useHistory();
 
   //Solo para chequear si funciona
-  const precio = quantityProductsAdded.productPrice
-  const cantidad = quantityProductsAdded.quantity
-  const total = precio*cantidad
-  console.log(precio)
-  console.log(cantidad)
-
+  const precio = quantityProductsAdded.productPrice;
+  const cantidad = quantityProductsAdded.quantity;
+  const total = precio * cantidad;
+  console.log(precio);
+  console.log(cantidad);
 
   return (
     <div className="itemDetail">
@@ -54,11 +50,13 @@ export default function ItemDetail({ product }) {
       </div>
 
       {/* ITEM DELCONTADOR */}
-      <ItemCountContainer
-        product={product}
-        setQuantityProductsAdded={setQuantityProductsAdded}
-        setshowFinishBuy={setshowFinishBuy}
-      />
+      {
+       !showFinishBuy ? <ItemCountContainer
+          product={product}
+          setQuantityProductsAdded={setQuantityProductsAdded}
+          setshowFinishBuy={setshowFinishBuy}
+        /> : null
+      }
 
       {/* ITEM TERMINAR COMPRA */}
       {showFinishBuy ? (
@@ -70,8 +68,7 @@ export default function ItemDetail({ product }) {
       ) : null}
 
       {/*Solo para chequear si funciona */}
-      {<p>Tu mondo es de {total}</p>}
-      
+      {<p>Tu monto es de {total}</p>}
     </div>
   );
 }
