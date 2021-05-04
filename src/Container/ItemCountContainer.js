@@ -20,7 +20,7 @@ export default function ItemCountContainer({product, setQuantityProductsAdded, s
   function onAdd(quantity) {
     console.log(`Se ejecutó función onAdd`)
     setItemAdd(true)
-    setQuantityProductsAdded( { productId: product.id, productPrice: product.price, quantity: item} )
+    setQuantityProductsAdded( { item: product, quantity: item} )
     setshowFinishBuy(true);
   }
 

@@ -12,56 +12,50 @@ import ItemDetailContainer from "./Container/ItemDetailContainer";
 import Cart from "./components/Cart/Cart";
 
 //Contextos
-import {CartContext} from './Context/cartContext'
+import CartContextProvider from "./Context/CartContext";
 
 //Componetes Testing: quizás sea esto molesto, pero me ayuda mucho para ir probando con clase en vivo.
 // import TestContainer from "./Container/EventReactContainer";
 // import AddEventListenerContainers from "./Container/AddEventListenerContainers";
 // import CustomInputContainer from "./Container/CustomInputContainer";
 
-// Importo contexto de prueba
-import { AppContext } from "./Context/AppContext";
-
 function App() {
-  
   return (
 
-    <CartContext.Provider value ={[]}>
-
+    <CartContextProvider>
       <BrowserRouter>
-      {/* El NavBar va a estar en todas las rutas */}
-      <NavBar />
+        {/* El NavBar va a estar en todas las rutas */}
+        <NavBar />
 
-      <Switch>
-        {/* Ruta de home */}
-        <Route exact path="/">
-          <HeaderContainer />
-          <ItemListContainer />
-        </Route>
+        <Switch>
+          {/* Ruta de home */}
+          <Route exact path="/">
+            <HeaderContainer />
+            <ItemListContainer />
+          </Route>
 
-        {/* Ruta de solo lista de items */}
-        <Route exact path="/category/:categoryId">
-          <ItemListContainer />
-        </Route>
+          {/* Ruta de solo lista de items */}
+          <Route exact path="/category/:categoryId">
+            <ItemListContainer />
+          </Route>
 
-        {/* Ruta de item en particular */}
-        <Route path="/item/:id">
-          <ItemDetailContainer />
-        </Route>
+          {/* Ruta de item en particular */}
+          <Route path="/item/:id">
+            <ItemDetailContainer />
+          </Route>
 
-         {/* Ruta de item en particular */}
-         <Route path="/cart">
-          <Cart />
-        </Route>
+          {/* Ruta de item en particular */}
+          <Route path="/cart">
+            <Cart />
+          </Route>
 
-        {/* Ruta si no estás logueado */}
-        <Route path="/not-logged">
-          <HeaderContainer />
-        </Route>
+          {/* Ruta si no estás logueado */}
+          <Route path="/not-logged">
+            <HeaderContainer />
+          </Route>
 
-
-        {/* Ruta de testing */}
-        {/* <Route path="/testRoute">
+          {/* Ruta de testing */}
+          {/* <Route path="/testRoute">
           <AppContext.Provider value={["pantalon", "pantuflas"]}>
             <AddEventListenerContainers />
           </AppContext.Provider>
@@ -69,11 +63,10 @@ function App() {
           <AddEventListenerContainers />
           <CustomInputContainer placeholder ="hola" /> 
         </Route> */}
-
-      </Switch>
-    </BrowserRouter>
-    </CartContext.Provider>
-
+        </Switch>
+      </BrowserRouter>
+    </CartContextProvider>
+    
   );
 }
 export default App;

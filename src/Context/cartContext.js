@@ -1,12 +1,23 @@
 //Importo para crear contexto
-import {createContext}from 'react';
+import {createContext, useState}from 'react';
+
 
 export const CartContext = createContext([]);
 
-export default function CartContextProvider (){
+
+export default function CartContextProvider ({children}){
+
+    const [onCart, setonCart] = useState([])
+
+    const [somethingInCart, setsomethingInCart] = useState(false)
+
+
 
     return(
 
-        <div></div>
+        <CartContext.Provider value={{onCart, setonCart, somethingInCart, setsomethingInCart}}>
+            {children}
+        </CartContext.Provider>
+
     )
 }

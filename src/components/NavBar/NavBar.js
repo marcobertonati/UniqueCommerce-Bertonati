@@ -23,7 +23,7 @@ export default function MostrarNavBar() {
       <Navbar bg="light" expand="lg">
         <Navbar.Brand onClick={()=>history.push('/')} style={{color: 'white', fontWeight: '900'}}>UNIQUE</Navbar.Brand>
         {/* <Navbar.Brand onClick={()=>history.push('/')} href="#home">UNIQUE</Navbar.Brand> ASI VIENE DE FÁBRICA*/}
-        <Navbar.Brand href="#home" className="cart-widget"><CartWidget/></Navbar.Brand>
+        <Navbar.Brand className="cart-widget"><CartWidget/></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse  id="basic-navbar-nav">
           <Nav  className="mr-auto">
