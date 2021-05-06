@@ -56,13 +56,13 @@ export default function CartContextProvider({ children }) {
           }
       ];
 
-      const [newCart] = onCart.filter(
+      const newCart = onCart.filter(
         (onCartProduct) => onCartProduct.item.id !== product.item.id
       );
 
 
     //   console.log(newProduct);
-      return setonCart([newProduct, newCart]);
+      return setonCart([...newCart,newProduct]);
     }
 
     //Seteo en el carro el producto que me llega si no existe nada
