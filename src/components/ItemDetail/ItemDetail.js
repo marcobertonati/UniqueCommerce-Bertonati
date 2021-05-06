@@ -1,51 +1,79 @@
+
+// Import React y State y Effect
 import React from "react";
 import { useState, useEffect } from "react";
 
 // Importo useContext
 import {useContext} from 'react';
-
 // Importo Contexto
 import {CartContext} from '../../Context/CartContext'
 
-
+// Importo CSS
 import "./ItemDetail.css";
-import ItemCountContainer from "../../Container/ItemCountContainer";
-import ItemCount from "../ItemCount/ItemCount";
 
-//Importamos para navegar
+// Importo Lógica del contador
+import ItemCountContainer from "../../Container/ItemCountContainer";
+// import ItemCount from "../ItemCount/ItemCount";
+
+//Importamos para navegar y poner links
 import { useHistory } from "react-router-dom";
 
-//Importo botones
+//Importo botones de boots-trap
 import { ButtonGroup, Button } from "react-bootstrap";
 
 
-//ACA EMPIEZA EL EXPORT
+
+//Bienvenido: Acá empieza la función cuando se renderiza ItemDetail//
+
 export default function ItemDetail({ product }) {
+  
+  ///////////////
+  // CONTEXTOS //
+  ///////////////
 
-  // Importo el contexto ¿No se pasan como props?
-  const {onCart, setonCart} = useContext(CartContext)
-  console.log(onCart)
+  // Importo el contexto lo que hay en el carrito
+  const {onCart} = useContext(CartContext)
+  // Importo un boleano para que cheequee si ya hay algo en el carrito
   const {somethingInCart, setsomethingInCart} = useContext(CartContext)
+  // Importo del contexto una función que recibe como argumento un objeto y lo setea en setonCart (CartContext.js)
+  const {addItemContext} = useContext(CartContext);
 
-  //CREO 2 ESTADOS
-  // ESTADO PARA SABER QUE ITEMS AGREGUÉ AL CARRITO
+
+  ///////////////
+  // ESTADOS ////
+  ///////////////
+
+  // Estado para setear items que vamos a gregar al carrito
   const [quantityProductsAdded, setQuantityProductsAdded] = useState([]);
 
-  // ¿AGREGUÉ ITEMS AL CARRITO? SI ES ASÍ, MOSTRAME EL TERMINAR COMPRA?
+  // Estado para saber si se agregó items, de esta manera se setea un booleano que lo que nos permite es ver o no el botón de finalziar compra
   const [showFinishBuy, setshowFinishBuy] = useState(false);
 
+
+  /////////////////
+  // USE EFFECTS //
+  /////////////////
+  // No estoy seguro para que funciona. Chequear. 
   useEffect(() => {
     setQuantityProductsAdded(quantityProductsAdded);
   }, []);
-
-  // console.log("ESTO TRAE quantityProductsAdded");
   console.log(quantityProductsAdded);
 
+
+  /////////////////
+  // FUNCIONES/////
+  /////////////////
+
+  // Declaramos variable para usar link en botones
   let history = useHistory();
 
+  // Función agregar a carrito. Esta función se la pasamos al botón agregar al carrito que se crea cuando al menos el usuario haya ajustado el contador a 1.
   function addItem() {
-    setonCart(quantityProductsAdded)
+    // Setea en el contexto el producto añadido
+    addItemContext(quantityProductsAdded)
+    // Setea en el contexto que existe ya un producto en el carrito. Esto permite que el botón finalizar compra este en todos los ItemsDetails. La idea es que venga acompañado de un texto que diga qué productos ya hay.
     setsomethingInCart(true)
+    // Se ejecuta función que lleva a /cart donde se ven los productos comproados
     history.push("/cart")
     
   }
@@ -56,6 +84,11 @@ export default function ItemDetail({ product }) {
   const total = precio * cantidad;
   console.log(precio);
   console.log(cantidad);
+
+
+  ////////////////////////////////
+  ///¿Qué exporta el componente?//
+  ////////////////////////////////
 
   return (
     <div className="itemDetail">
@@ -80,8 +113,10 @@ export default function ItemDetail({ product }) {
         /> : null
       }
 
-      {/* ITEM TERMINAR COMPRA */}
-      {showFinishBuy || somethingInCart ? (
+
+      {/* ITEM TERMINAR COMPRA: si colocó +1 en la botonera o en el CartContext existe algo previamente en el cart , ya te deja terminar la compra */}
+      {showFinishBuy || somethingInCart ? 
+      (
         <ButtonGroup size="lg" className="mb-2">
           <Button onClick={addItem}>
             Finalizar compra

@@ -3,10 +3,8 @@ import { ButtonGroup, Button } from "react-bootstrap";
 
 import "./ItemCount.css";
 
-export default function ItemCount({ onIncrement, onDecrement, itemQuantity, onAdd, itemAdded }) {
+export default function ItemCount({ onIncrement, onDecrement, itemQuantity, onAdd }) {
   console.log(`Entro a ItemCount.js`)
-  // console.log(itemAdded)
-  // console.log(itemQuantity)
 
   return (
     <div className="productoCounter">
@@ -20,7 +18,7 @@ export default function ItemCount({ onIncrement, onDecrement, itemQuantity, onAd
       <br />
 
       {
-        //Si la cantidad de items es MAYOR a 0 (Es decir a partir de 1) se va a mostrar el boton
+        //Si la cantidad de items es MAYOR a 0 (Es decir a partir de 1) se va a mostrar el boton a la cual mediante prop se le pasa la función onAdd que setea el producto y su cantidad
         itemQuantity > 0 ? (
           <ButtonGroup size="lg" className="mb-2">
             <Button onClick={onAdd}>Agregar al Carrito</Button>
@@ -29,6 +27,9 @@ export default function ItemCount({ onIncrement, onDecrement, itemQuantity, onAd
         //Si es Null, no muestra
       }
 
+
+
+
       {/* {
         itemAdded ? (
           <ButtonGroup size="lg" className="mb-2">
@@ -36,7 +37,6 @@ export default function ItemCount({ onIncrement, onDecrement, itemQuantity, onAd
           </ButtonGroup>
         ) : null 
       } */}
-
       {/* Acá debería aparecer otro botón que aparezca cuando el estado de que hay algo en el carrito aparezca TERMINAR COMPRA */}
 
     </div>

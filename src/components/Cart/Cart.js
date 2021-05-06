@@ -10,17 +10,17 @@ import {CartContext} from '../../Context/CartContext'
 export default function Cart() {
 
     const {onCart} = useContext(CartContext)
-    // console.log(onCart.item.title)
-
+    console.log(onCart)
+    
     return (
 
         <div>
 
             <h1>Bienvenido al carrito</h1>
             <h2>Este es su carrito</h2>
-            {onCart.item.title}
+            {/* {onCart.item.title}
             {onCart.quantity}
-            
+             */}
         
 
         </div>
