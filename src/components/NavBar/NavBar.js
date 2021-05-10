@@ -3,6 +3,12 @@ import React from "react";
 //Importamos React Rout Dom
 import { useHistory } from 'react-router-dom';
 
+// Importo hook useContext
+import { useContext } from "react";
+
+// Importo Contexto
+import { CartContext } from "../../Context/CartContext";
+
 //Importo Icono
 import CartWidget from "../CartWidget/CartWidget.js"
 
@@ -13,8 +19,24 @@ import {Navbar, Nav, NavDropdown, Form, FormControl, Button} from "react-bootstr
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './NavBar.css'
 
+
+// AQUÍ COMIENZA EL EXPORT DEFAULT
+
 export default function MostrarNavBar() {
 
+  const { onCart } = useContext(CartContext);
+  const { somethingInCart } = useContext(CartContext);
+
+
+  let productQuantity = 0;
+
+  onCart.forEach(product => {
+    console.log('Entro a la Función ')
+    return productQuantity = product.quantity + productQuantity
+    
+  });
+
+  // Declaro history para navegación de botones
   let history = useHistory()
 
   return (
@@ -23,7 +45,19 @@ export default function MostrarNavBar() {
       <Navbar bg="light" expand="lg">
         <Navbar.Brand onClick={()=>history.push('/')} style={{color: 'white', fontWeight: '900'}}>UNIQUE</Navbar.Brand>
         {/* <Navbar.Brand onClick={()=>history.push('/')} href="#home">UNIQUE</Navbar.Brand> ASI VIENE DE FÁBRICA*/}
-        <Navbar.Brand className="cart-widget"><CartWidget/></Navbar.Brand>
+        <Navbar.Brand className="cart-widget">
+
+          {
+            somethingInCart ? 
+            <>
+              <CartWidget/>
+              <span>Total de productos {productQuantity}</span>
+            </>
+            :
+            null
+          }
+          
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse  id="basic-navbar-nav">
           <Nav  className="mr-auto">

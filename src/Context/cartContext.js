@@ -86,30 +86,57 @@ export default function CartContextProvider({ children }) {
 
 
    // Función clear que remmueve todos los items
-   function removeItem(product) {
-       const [removeQuantityItem] = onCart.filter(productOnCart => productOnCart.item.id === product.item.id);
+//    function removeItem(product) {
+//        const [removeQuantityItem] = onCart.filter(productOnCart => productOnCart.item.id === product.item.id);
 
-       const removedOneQuantityItem = removeQuantityItem = {
-           item: {
+//        const removedOneQuantityItem = removeQuantityItem = {
+//            item: {
 
-            description: product.item.description,
-            id: product.item.id,
-            idCategory: product.item.idCategory,
-            photo: product.item.photo,
-            price: product.item.price,
-            title: product.item.title
+//             description: product.item.description,
+//             id: product.item.id,
+//             idCategory: product.item.idCategory,
+//             photo: product.item.photo,
+//             price: product.item.price,
+//             title: product.item.title
 
-           },
-           quantity: removeQuantityItem.quantity - 1
-       }
+//            },
+//            quantity: removeQuantityItem.quantity - 1
+//        }
 
-       setonCart([onCart, removedOneQuantityItem])
+//        setonCart([onCart, removedOneQuantityItem])
 
-}
+// }
+
 
   // Función clear que remmueve todos los items
   function clear() {
     setonCart([])
+  }
+
+
+  // Función sacar item de la canasta
+  function removeItem (id) {
+    console.log(`Soy el producto con id ${id}`)
+    
+    // const [productToBeRest] = onCart.filter(product => product.item.id === id )
+
+    // const newCart = onCart.filter(product => product.item.id !== id )
+    // console.log('Esto trae newCart')
+    // console.log(newCart)
+
+    // console.log('Esto productToBeRest')
+    // console.log(productToBeRest)
+
+    // const newRestedProducto = {
+    //     item: {...productToBeRest.item},
+    //     quantity: productToBeRest.quantity - 1
+    // }
+
+    // console.log('Esto traeNewRestedProducto')
+    // console.log(newRestedProducto)
+
+    // setonCart([...newCart, newRestedProducto])
+    
   }
 
   return (
@@ -120,6 +147,7 @@ export default function CartContextProvider({ children }) {
         somethingInCart,
         setsomethingInCart,
         addItemContext,
+        removeItem,
       }}
     >
       {children}
