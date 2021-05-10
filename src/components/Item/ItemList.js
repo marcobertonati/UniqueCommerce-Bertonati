@@ -10,7 +10,7 @@ export default function ItemList({ item }) {
       
       item.map((singleItem) => (
 
-        <Item title={singleItem.title} image={singleItem.photo} key={singleItem.id} id={singleItem.id} />
+        <Item image={singleItem.photo} key={singleItem.id} productItem={singleItem} />
 
       ))}
       

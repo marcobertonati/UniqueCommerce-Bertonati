@@ -1,5 +1,6 @@
 //Importo para crear contexto
 import { createContext, useState } from "react";
+import { ThemeProvider } from "react-bootstrap";
 import Cart from "../components/Cart/Cart";
 
 export const CartContext = createContext([]);
@@ -22,7 +23,8 @@ export default function CartContextProvider({ children }) {
   // Función que setea en el contexto de carrito el producto que le llega desde ItemDetail
   function addItemContext(product) {
     //por las dudas, el 'product' es un objeto que está divido en 2 propiedades: product.item, es el item en si mismo... y product.quantity es la cantidad que agregó de ese producto
-    console.log(`Se ejecutó la function addItemContext que trae:`);
+    console.log(`Se ejecutó la function addItemContext que trae este producto:`);
+    console.log(product)
 
     if (isInCart(product)) {
       console.log("Esto trae product id");
@@ -79,14 +81,29 @@ export default function CartContextProvider({ children }) {
 
   // Función que chequea si existe previamente un producto. Esta sirve para que si existe no agrege otro objeto al array, sino que lo agregue al ya existente.
   function isInCart(product) {
-    return onCart.some(
-      (productOnCart) => productOnCart.item.id === product.item.id
-    );
+
+    console.log(product)
+    console.log(typeof(product))
+
+
+    if(product.item.id===undefined) {
+
+        console.log('Aún no hay nada en el carrito')
+
+    } else {
+
+        return onCart.some(
+          (productOnCart) => productOnCart.item.id === product.item.id
+        );
+
+    }
   }
 
 
-   // Función clear que remmueve todos los items
+// Función clear que remmueve todos los items
 //    function removeItem(product) {
+//        console.log('Se ejecutó función REMOVE ITEM y trae este producto')
+//        console.log(product)
 //        const [removeQuantityItem] = onCart.filter(productOnCart => productOnCart.item.id === product.item.id);
 
 //        const removedOneQuantityItem = removeQuantityItem = {
@@ -102,20 +119,21 @@ export default function CartContextProvider({ children }) {
 //            },
 //            quantity: removeQuantityItem.quantity - 1
 //        }
-
 //        setonCart([onCart, removedOneQuantityItem])
-
 // }
 
 
   // Función clear que remmueve todos los items
-  function clear() {
+  function clearCart() {
+    setsomethingInCart(false)
     setonCart([])
+    alert('¡Vaciaste tu carrito! Vuelva pronto')
   }
 
 
   // Función sacar item de la canasta
   function removeItem (id) {
+    console.log(`Soy función removeItem`)
     console.log(`Soy el producto con id ${id}`)
     
     // const [productToBeRest] = onCart.filter(product => product.item.id === id )
@@ -139,6 +157,8 @@ export default function CartContextProvider({ children }) {
     
   }
 
+  console.log('SOY CART CONTEXT')
+  console.log(onCart)
   return (
     <CartContext.Provider
       value={{
@@ -148,6 +168,7 @@ export default function CartContextProvider({ children }) {
         setsomethingInCart,
         addItemContext,
         removeItem,
+        clearCart
       }}
     >
       {children}

@@ -9,10 +9,12 @@ import { useContext } from "react";
 import { CartContext } from "../../Context/CartContext";
 
 export default function Cart() {
+
   // Importo desde el contexto que hay en el carrito
   const { onCart } = useContext(CartContext);
   const { somethingInCart } = useContext(CartContext);
   const { removeItem } = useContext(CartContext);
+  const { clearCart } = useContext(CartContext)
   console.log(onCart);
   console.log(typeof (onCart));
   console.log(somethingInCart);
@@ -43,6 +45,7 @@ export default function Cart() {
     <div>
       <h1>Bienvenido a su carrito</h1>
 
+      {/* Si hay algo en el carrito renderizo el listado, o que no hay nada*/}
       {somethingInCart === false ? (
         <h2>Usted no tiene productos en el carrito <Link to ={`/`}>¡Chequea todos nuestros productos!</Link></h2>
       ) : (
@@ -59,6 +62,7 @@ export default function Cart() {
         })
       )}
 
+      {/* Si hay algo en el carrito renderizo el total */}
       {
           somethingInCart ?
             <h5 style={{color: "black"}}>El total de su carrito es: {total}</h5>
@@ -66,9 +70,10 @@ export default function Cart() {
             null
       }
 
-{
+      {/* Si hay algo en el carrito renderizo el botón para vaciar */}
+      {
           somethingInCart ?
-            <button>Vaciar Carrito</button>
+            <button onClick={clearCart}>Vaciar Carrito</button>
             :
             null
       }

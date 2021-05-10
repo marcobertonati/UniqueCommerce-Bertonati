@@ -68,14 +68,9 @@ export default function ItemDetail({ product }) {
   let history = useHistory();
 
   // Función agregar a carrito. Esta función se la pasamos al botón agregar al carrito que se crea cuando al menos el usuario haya ajustado el contador a 1.
-  function addItem() {
-    // Setea en el contexto el producto añadido
-    addItemContext(quantityProductsAdded)
-    // Setea en el contexto que existe ya un producto en el carrito. Esto permite que el botón finalizar compra este en todos los ItemsDetails. La idea es que venga acompañado de un texto que diga qué productos ya hay.
-    setsomethingInCart(true)
+  function goCart() {
     // Se ejecuta función que lleva a /cart donde se ven los productos comproados
     history.push("/cart")
-    
   }
 
   //Solo para chequear si funciona
@@ -118,15 +113,12 @@ export default function ItemDetail({ product }) {
       {showFinishBuy || somethingInCart ? 
       (
         <ButtonGroup size="lg" className="mb-2">
-          <Button onClick={addItem}>
+          <Button onClick={goCart}>
             Finalizar compra
           </Button>
-          <p>Usted ya tiene en el carrito: {onCart.item?.title}</p>
+          <p>Ya tienes items en tu carrito, puedes finalziar tu compra</p>
         </ButtonGroup>
       ) : null}
-
-      {/*Solo para chequear si funciona */}
-      {<p>Tu monto es de {total}</p>}
     </div>
   );
 }
