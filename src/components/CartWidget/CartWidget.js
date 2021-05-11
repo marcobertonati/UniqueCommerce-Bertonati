@@ -7,6 +7,7 @@ export default function MostrarCartWidget () {
 
     let history = useHistory()
     return(
-        <img onClick={()=>history.push('/cart')}src={CartWidget}/>
+            <img onClick={()=>history.push('/cart')}src={CartWidget}/>
+        
     )
 }

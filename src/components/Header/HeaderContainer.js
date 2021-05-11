@@ -7,7 +7,7 @@ export default function showHeader(props) {
   return (
     <Container fluid className="background-home">
       <Row>
-        <Col><h2>EL PRECIO JUSTO PARA LO ÚNICO</h2></Col>
+        <Col><h2 className="h2-header">EL PRECIO JUSTO PARA LO ÚNICO</h2></Col>
       </Row>
       <Row>
         <Col><h3>{props.greetings}! Donás más % de tu venta, mejor posicionado vas a estar. Agregamos valor a tus productos y tu marca.</h3></Col>

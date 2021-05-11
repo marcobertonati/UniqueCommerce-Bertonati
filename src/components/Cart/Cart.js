@@ -15,13 +15,14 @@ export default function Cart() {
   const { somethingInCart } = useContext(CartContext);
   const { removeItem } = useContext(CartContext);
   const { clearCart } = useContext(CartContext)
-  console.log(onCart);
-  console.log(typeof (onCart));
-  console.log(somethingInCart);
-  console.log(typeof(removeItem))
+  // console.log(onCart);
+  // console.log(typeof (onCart));
+  // console.log(somethingInCart);
+  // console.log(typeof(removeItem))
 
   let total = 0;
 
+  //Función que calcula el monto total del carrito
   function totalAmount() {
     console.log("Se ejecutó función totalAmount");
 
@@ -38,7 +39,6 @@ export default function Cart() {
     }
 
   }
-
   totalAmount()
 
   return (
@@ -47,7 +47,7 @@ export default function Cart() {
 
       {/* Si hay algo en el carrito renderizo el listado, o que no hay nada*/}
       {somethingInCart === false ? (
-        <h2>Usted no tiene productos en el carrito <Link to ={`/`}>¡Chequea todos nuestros productos!</Link></h2>
+        <h2 className="cart-h2">Usted no tiene productos en el carrito <Link to ={`/`}>¡Chequea todos nuestros productos!</Link></h2>
       ) : (
         onCart.map((product) => {
           return (
@@ -56,7 +56,7 @@ export default function Cart() {
                 <li>Cantidad: {product.quantity}</li>
                 <li>Precio: {product.item.price}</li>
                 <li>Total por producto: {product.item.price * product.quantity}</li>
-                <li><button onClick={removeItem(product.item.id)} className={product.item.id}>-</button></li>
+                <li><button onClick={()=>removeItem(product.item.id)} className={product.item.id}>-</button></li>
             </ul>
           );
         })
