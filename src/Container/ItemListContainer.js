@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ItemList from '../components/Item/ItemList';
-import {getProducts} from '../Services/Services';
+import {getAllProducts} from '../Services/Services';
 import {useParams} from 'react-router-dom';
 
 export default function ItemListContainer() {
@@ -16,19 +16,23 @@ export default function ItemListContainer() {
 
             //useEffect si no viene con url params: sirve para el home
             if (categoryId===undefined) {
-                getProducts
+                getAllProducts
+                    // .then(data=>console.log(data))
                 .then(data=> {
                     setItem(data)
                 })
             
             } else {
                 //useEffect si viene con url params: sirve para las category
-                getProducts
+                getAllProducts
+                    // .then(data=>console.log(data))
                 .then(data=> {
-                    let productsCategory = data.filter(product=> product.idCategory === categoryId)
+                    let productsCategory = data.filter(product=> product.categoryId === categoryId)
                     console.log(productsCategory)
                     setItem(productsCategory)
                 })
+
+                
             }
         }, 2000)
 
