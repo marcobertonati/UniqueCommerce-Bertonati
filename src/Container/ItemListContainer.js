@@ -6,11 +6,10 @@ import {useParams} from 'react-router-dom';
 export default function ItemListContainer() {
 
     const { categoryId } = useParams();
-    console.log(categoryId);
     const [item, setItem] = useState([])
+    const [noItemSet, SetNoItemSet] = useState(false)
     
     useEffect(()=> {
-
         //Simulamos un retraso de 2 segundos
         setTimeout(() => {
 
@@ -18,7 +17,8 @@ export default function ItemListContainer() {
             if (categoryId===undefined) {
                 getAllProducts
                     // .then(data=>console.log(data))
-                .then(data=> {
+                    .then(data=> {
+                    console.log(data)
                     setItem(data)
                 })
             
@@ -26,25 +26,32 @@ export default function ItemListContainer() {
                 //useEffect si viene con url params: sirve para las category
                 getAllProducts
                     // .then(data=>console.log(data))
-                .then(data=> {
-                    let productsCategory = data.filter(product=> product.categoryId === categoryId)
-                    console.log(productsCategory)
-                    setItem(productsCategory)
+                    .then(data=> {
+                     let productsCategory = data.filter(product=> product.categoryId === categoryId)
+                        console.log(productsCategory)
+                        setItem(productsCategory)
                 })
-
                 
             }
         }, 2000)
-
     }, [categoryId]);
     // Sin esto de arriba no se actualzia el componente por lo cual si entro a /category/anillos, pero luego voy a /category/gorras se van a seguir viendo los anillos aunque esté parado en horra. El ITEM no se está actualizando, solo se monta
 
     // PREGUNTA PORQUE TENGO QUE PONER EL CATEGORY EN LA LINEA 29 ( la que est{a entre [] ) Y NO EL ITEM. Pasa que si pongo el ITEM me crea un bucle infinito.
 
     return (
-        <div className="itemListContainer container-fluid" style={{marginTop:'1rem'}}>
-               <ItemList item={item}/>
-        </div>
+
+        <>
+        {
+            noItemSet ? <h5>No Encontramos Items</h5> :  
+            
+                        <div className="itemListContainer container-fluid" style={{marginTop:'1rem'}}>
+                        <ItemList item={item}/>
+                         </div>
+
+        }
+         </>
+       
          
     )
 }
