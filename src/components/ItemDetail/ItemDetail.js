@@ -26,6 +26,9 @@ import { ButtonGroup, Button } from "react-bootstrap";
 //Bienvenido: Acá empieza la función cuando se renderiza ItemDetail//
 
 export default function ItemDetail({ product }) {
+
+  console.log(`Esto me trae products en ITEM DETAIL`)
+  console.log(product)
   
   ///////////////
   // CONTEXTOS //

@@ -1,56 +1,24 @@
 import React, { useState, useEffect } from "react";
-import {useParams} from 'react-router-dom'
-import ItemDetail from '../components/ItemDetail/ItemDetail'
-const {getProductsById, getProductsByIdAwait} = require('../Services/Services')
-const {getAllProducts} = require('../Services/Services')
-const {getProductForId} = require( '../Services/Services')
-
+import { useParams } from "react-router-dom";
+import ItemDetail from "../components/ItemDetail/ItemDetail";
+import { getProductsById } from "../Services/Services";
 
 export default function ItemDetailContainer() {
-    // console.log("SE EJECUTO ITEM DETAIL CONTAINER")
 
-    const { id } = useParams();
-    console.log(id);
-    const [itemDetail, setItemDetail] = useState([]);
-    
-    useEffect(() => {
-        // console.log("ENTRO A USE EFFECT")
-        // console.log("ENTRO A SETIMEOUT");
-        console.log(
-        `A VER QUE
-        PASA SEÑORES
-        QUE NO ANDA
-        `);
+  const { id } = useParams();
+  const [itemDetail, setItemDetail] = useState([]);
 
-        console.log(`Esto trae el ID: ${id}`);
-        
-        const product = getProductsByIdAwait(id);
+  useEffect(() => {
+    setTimeout(() => {
+      const product = getProductsById(id);
+      product.then((product) => setItemDetail(product));
+      // Tengo que poner ese THEN para resolver la promesa sino te trae el objeto no resuelto. No es que te traiga el return de del array. Lo que te retorna es UNA PROMESA que NECESITA ser resuelta. Y si no ponemos un .then NUNCA LA RESUELVE porque no sabemos cuánto tiempo va a tardar en resolverla
+    }, 2000);
+  }, []);
 
-        console.log('Esto trae getProductsByIdAwait')
-        console.log(product)
-        setItemDetail(product)
-
-
-        // setTimeout(()=> {
-            
-            
-        //     // getAllProducts
-        //     //     .then(data=> {
-        //     //     console.log(data);
-        //     //     console.log(id);
-        //     //     // Recortar que en el 'const [especificItem] lo utilizo entre corchetes [] porque lo que devuelve el fiter es un array con un objeto adentro. Por lo cual cuando yo lo pongo entre [] lo devuelve desestructurado. También que utilizo == ya que devuelve un STRING y el otro es un NUMBER. Podría parsearlo para que sea más óptimo.
-        //     //     const [especificItem] = data.filter(product=> product.id == id);
-        //     //     console.log(especificItem);
-        //     //     setItemDetail(especificItem);
-        //     // })  
-
-
-        // }, 2000)
-    },[]);
-
-    return (
-        <div className="itemDetailContainer">
-            <ItemDetail product={itemDetail}/>
-        </div>
-    )
+  return (
+    <div className="itemDetailContainer">
+      <ItemDetail product={itemDetail} />
+    </div>
+  );
 }

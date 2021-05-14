@@ -19,16 +19,13 @@ const itemCollection = db.collection('items');
 // EL QUERY FILTRADO ES EL WHERE.. WHERE=1 ... o WHERE=collares
 
 
-// Aclaración: Se que setoy haciendo 2 rutas que hacen exactamente lo mismo. Solo estoy usando 2 a manera pedagógica mái de ponerle nombre a los diferentes procesos.
-
-
-
-
-
-
 
 /////////////////////////////////////////
+/////////////////////////////////////////
+//                                     //
 // PETICIONES A FIRESTONE DE FIRE BASE //
+//                                     //
+/////////////////////////////////////////
 /////////////////////////////////////////
 
 // LLAMADO A TODOS LOS PRODUCTOS
@@ -78,18 +75,16 @@ export const getAllProducts = new Promise((resolve,reject) => {
 
 // } 
 
-export async function getProductsByIdAwait(id) {
+export async function getProductsById(id) {
     
-    console.log(`El id que trajo la función es: ${id}`)
     const itemRef = await itemCollection.get();
-    // Este .then sería el equivalente al .JSON que jsonifica y te trae cada elemento
+
     console.log(itemRef)
-    const productFinded = itemRef.docs.filter(product=> product.id === id).map(product=>product.data())
+    const [productFinded] = itemRef.docs.filter(product=> product.id === id).map(product=>product.data())
 
-    console.log(productFinded)
+        // Recortar que en el 'const [productFinded] lo utilizo entre corchetes [] porque lo que devuelve el fiter es un array con un objeto adentro. Por lo cual cuando yo lo pongo entre [] lo devuelve desestructurado. También que utilizo == ya que devuelve un STRING y el otro es un NUMBER. Podría parsearlo para que sea más óptimo.
 
-    return productFinded;
-            
+    return productFinded;     
 
 } 
 
@@ -131,13 +126,11 @@ export async function getProductsByIdAwait(id) {
 
 
 
+////////// DOOM DE COMENTADO ////////// 
+//De acá abajo no sirve, es como llamaba anteriormente la "base de dadots"
 
 
-
-
-
-
-// Llamado de petición fetch para TODO
+// Llamado de petición fetch para TODO con un async mock
 // const getProducts = new Promise ((resolve,reject) => {
 
 //     fetch('https://raw.githubusercontent.com/marcobertonati/UniqueCommerce-Bertonati/main/src/Data/itemsJSON.json')
@@ -145,7 +138,6 @@ export async function getProductsByIdAwait(id) {
 //         .then(data=>resolve(data))
 //         .catch(err=>reject(err))
 // })
-
 
 
 // Llamado de petición fetch para ID
