@@ -1,5 +1,8 @@
 import React from "react";
 import "./Cart.css";
+
+//Importamos React Rout Dom
+import { useHistory } from "react-router-dom";
 import { Link } from 'react-router-dom'
 
 // Importo useContext
@@ -19,6 +22,8 @@ export default function Cart() {
   // console.log(typeof (onCart));
   // console.log(somethingInCart);
   // console.log(typeof(removeItem))
+
+  let history = useHistory()
 
   let total = 0;
 
@@ -74,6 +79,14 @@ export default function Cart() {
       {
           somethingInCart ?
             <button onClick={clearCart}>Vaciar Carrito</button>
+            :
+            null
+      }
+
+      {/* Si hay algo en el carrito renderizo el botón para comprar */}
+      {
+          somethingInCart ?
+            <button onClick={()=>history.push("/checkout")}>¡Comprar!</button>
             :
             null
       }

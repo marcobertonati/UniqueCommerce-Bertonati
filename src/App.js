@@ -9,6 +9,7 @@ import NavBar from "./components/NavBar/NavBar";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import ItemListContainer from "./Container/ItemListContainer";
 import ItemDetailContainer from "./Container/ItemDetailContainer";
+import CheckoutContainer from "./Container/CheckoutContainer";
 import Cart from "./components/Cart/Cart";
 
 //Contextos
@@ -44,9 +45,14 @@ function App() {
             <ItemDetailContainer />
           </Route>
 
-          {/* Ruta de item en particular */}
+          {/* Ruta de carrito */}
           <Route path="/cart">
             <Cart />
+          </Route>
+
+           {/* Ruta de carrito */}
+           <Route path="/checkout">
+            <CheckoutContainer />
           </Route>
 
           {/* Ruta si no estás logueado */}

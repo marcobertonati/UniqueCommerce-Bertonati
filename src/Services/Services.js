@@ -1,22 +1,50 @@
 import db from '../Firebase/index'
+import * as firebase from 'firebase/app'
 
+export const dateFirebase = firebase.default.firestore.Timestamp.fromDate(new Date())
+
+//COLECCIÓN ITEMS
 const itemCollection = db.collection('items');
 
-// function getItems() {
-//     return itemCollection.get()
-//         .then(snapshot => {
-//             return snapshot.docs.map(doc => doc.data())
-//         })
-// }
+//COLECCIÓN ORDERS
+const ordersCollection = db.collection('orders');
 
-// ese id tiene que traerlo del url-params
-// getITemById(id) {
-//     return itemCollection.doc(id).get().then(snapshot=> snapshot)
-// }
 
-// EL ERROR ES PORQUE TENES QUE SACAR EL MODULE EXPORT
+// Función que setea un orden
+export function addOrders(newOrder) {
+    console.log('SERVICES: Se ejecutó función addOrders')
+    console.log('Esto llega de la orden de compras para agregar a firebase')
+    console.log(newOrder)
 
-// EL QUERY FILTRADO ES EL WHERE.. WHERE=1 ... o WHERE=collares
+    const ordenes = ordersCollection.get().then(data=>data.docs.map(ordern=>ordern.data()))
+    
+    ordenes.
+        then(data => {
+            console.log(data)
+        })
+        .catch(err=> {
+            console.log(err)
+        })   
+
+    ordersCollection.add(newOrder)
+        .then(
+            ({id}) => {
+                alert('Resolvio promesa')
+                alert('¡Compra finalizada')
+                alert(`Este es su id de comprobante ${id}`)
+             })
+        .catch(
+            (err) => {
+                alert('Entró a problema')
+                console.log(err)})
+
+    console.log('Sale de addOrders')
+
+}
+
+
+
+
 
 
 
@@ -123,6 +151,12 @@ export async function getProductsById(id) {
 //             .catch(err=>reject(err))
 //     })
 // }
+
+
+
+
+
+
 
 
 

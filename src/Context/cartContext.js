@@ -3,8 +3,17 @@ import { createContext, useState } from "react";
 import { ThemeProvider } from "react-bootstrap";
 import Cart from "../components/Cart/Cart";
 
+//Importo SERVICE para postear item
+import {addOrders} from '../Services/Services'
+
+//Importo de firebase la función que trae fecha
+import {dateFirebase} from '../Services/Services'
+
+// Exporto contexto
 export const CartContext = createContext([]);
 
+
+// ¿Qué exporta CartContext
 export default function CartContextProvider({ children }) {
   ///////////
   //ESTADOS//
@@ -16,9 +25,13 @@ export default function CartContextProvider({ children }) {
   // Estado que chequea si existen productos en el carrito. Este se actualiza cuando efectivamente se ejecuta la función AddItem
   const [somethingInCart, setsomethingInCart] = useState(false);
 
-  /////////////
-  //FUNCIONES//
-  /////////////
+  // Estado donde se setea la orden de compra con datos de la persona y el contenido del carrito
+  const [order, setOrder] = useState({})
+
+
+  /////////////////////////////
+  //FUNCIONES PARA EL CARRITO//
+  /////////////////////////////
 
   // Función que setea en el contexto de carrito el producto que le llega desde ItemDetail
   function addItemContext(product) {
@@ -78,7 +91,6 @@ export default function CartContextProvider({ children }) {
     console.log(onCart);
   }
 
-
   // Función que chequea si existe previamente un producto. Esta sirve para que si existe no agrege otro objeto al array, sino que lo agregue al ya existente.
   function isInCart(product) {
 
@@ -105,7 +117,6 @@ export default function CartContextProvider({ children }) {
     setonCart([])
     alert('¡Vaciaste tu carrito! Vuelva pronto')
   }
-
 
   // Función sacar item de la canasta
   function removeItem (id) {
@@ -155,8 +166,75 @@ export default function CartContextProvider({ children }) {
     
   }
 
-  console.log('SOY CART CONTEXT 🛒👇')
+  /////////////////////////////
+  //FUNCIONES PARA LA ORDERS //
+  /////////////////////////////
+
+  // Función para setear orden
+  function addOrder(userInfo) {
+
+    console.log('Esto llega de userInfo')
+    console.log(userInfo)
+
+    const newOrder = {
+      buyer: {...userInfo},
+      items: itemIdTitlePrince(),
+      date:  dateFirebase,
+      total: totalAmount(),
+    }
+
+    console.log('Esta es la orden')
+    console.log(newOrder)
+
+    setOrder(newOrder)
+    addOrders(newOrder)
+
+  }
+
+
+  ////////////////////////////////
+  // FUNCIONES PARA OTROS DATOS //
+  ////////////////////////////////
+
+  function totalAmount() {
+
+    let totalAmount = 0;
+
+    onCart.forEach(product => {
+      totalAmount = totalAmount + product.item.price * product.quantity
+      
+    });
+
+    return totalAmount;
+    
+  }
+
+  function itemIdTitlePrince() {
+
+    const cartItemIdtitlePrice = onCart.map(product => {
+      return { 
+        id: product.item.id,
+        title: product.item.title,
+        price: product.item.price,
+        quantity: product.quantity
+            }
+    }
+    )
+
+    return cartItemIdtitlePrice;
+
+  }
+
+
+  /////////////////////////////////
+  //¿QUÉ TRAE EL CART A LA ORDER //
+  /////////////////////////////////
+
+  console.log('SOY CART DE CARTCONTEXT 🛒👇')
   console.log(onCart)
+  console.log('SOY CART ORDER DE CARTCONTEXT 📋👇')
+  console.log(order)
+
   return (
     <CartContext.Provider
       value={{
@@ -166,7 +244,9 @@ export default function CartContextProvider({ children }) {
         setsomethingInCart,
         addItemContext,
         removeItem,
-        clearCart
+        clearCart,
+        addOrder,
+        setOrder
       }}
     >
       {children}
