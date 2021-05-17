@@ -1,6 +1,10 @@
+// Importo configuración de la base de datos de FireBase
 import db from '../Firebase/index'
+// Importo FIREBASE para otras funcionalidades
 import * as firebase from 'firebase/app'
 
+
+// Función que exporta la fecha
 export const dateFirebase = firebase.default.firestore.Timestamp.fromDate(new Date())
 
 //COLECCIÓN ITEMS
@@ -11,41 +15,36 @@ const ordersCollection = db.collection('orders');
 
 
 // Función que setea un orden
-export function addOrders(newOrder) {
+export async function addOrders(newOrder) {
+
     console.log('SERVICES: Se ejecutó función addOrders')
     console.log('Esto llega de la orden de compras para agregar a firebase')
     console.log(newOrder)
 
-    const ordenes = ordersCollection.get().then(data=>data.docs.map(ordern=>ordern.data()))
-    
-    ordenes.
-        then(data => {
-            console.log(data)
-        })
-        .catch(err=> {
-            console.log(err)
-        })   
+    // Esto es solo para chequear las ordenes que hay
+    // const ordenes = ordersCollection.get().then(data=>data.docs.map(ordern=>ordern.data()))
+    // ordenes.
+    //     then(data => {
+    //         console.log(data)
+    //     })
+    //     .catch(err=> {
+    //         console.log(err)
+    //     })   
 
-    ordersCollection.add(newOrder)
+    await ordersCollection.add(newOrder)
         .then(
             ({id}) => {
+                console.log('Resolvio promesa')
                 alert('Resolvio promesa')
                 alert('¡Compra finalizada')
                 alert(`Este es su id de comprobante ${id}`)
              })
         .catch(
             (err) => {
+                console.log('No resolvio promesa')
                 alert('Entró a problema')
                 console.log(err)})
-
-    console.log('Sale de addOrders')
-
 }
-
-
-
-
-
 
 
 /////////////////////////////////////////

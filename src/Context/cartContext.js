@@ -1,7 +1,6 @@
 //Importo para crear contexto
 import { createContext, useState } from "react";
 import { ThemeProvider } from "react-bootstrap";
-import Cart from "../components/Cart/Cart";
 
 //Importo SERVICE para postear item
 import {addOrders} from '../Services/Services'
@@ -15,6 +14,7 @@ export const CartContext = createContext([]);
 
 // ¿Qué exporta CartContext
 export default function CartContextProvider({ children }) {
+
   ///////////
   //ESTADOS//
   ///////////
@@ -171,7 +171,7 @@ export default function CartContextProvider({ children }) {
   /////////////////////////////
 
   // Función para setear orden
-  function addOrder(userInfo) {
+  async function addOrder(userInfo) {
 
     console.log('Esto llega de userInfo')
     console.log(userInfo)
@@ -187,15 +187,23 @@ export default function CartContextProvider({ children }) {
     console.log(newOrder)
 
     setOrder(newOrder)
-    addOrders(newOrder)
+    await addOrders(newOrder)
+
+    console.log('Finalizó el proceso de order')
+  
+    setOrder({})
+    setonCart([])
+    setsomethingInCart(false)
 
   }
+
 
 
   ////////////////////////////////
   // FUNCIONES PARA OTROS DATOS //
   ////////////////////////////////
 
+  //Función que saca el total del carrito
   function totalAmount() {
 
     let totalAmount = 0;
@@ -209,6 +217,7 @@ export default function CartContextProvider({ children }) {
     
   }
 
+  //Función que sirve para sacar algunos datos que van en las ordenes de compra
   function itemIdTitlePrince() {
 
     const cartItemIdtitlePrice = onCart.map(product => {
@@ -224,6 +233,7 @@ export default function CartContextProvider({ children }) {
     return cartItemIdtitlePrice;
 
   }
+
 
 
   /////////////////////////////////
