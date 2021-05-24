@@ -178,7 +178,7 @@ export default function CartContextProvider({ children }) {
 
     const newOrder = {
       buyer: {...userInfo},
-      items: itemIdTitlePrince(),
+      items: itemIdTitlePrice(),
       date:  dateFirebase,
       total: totalAmount(),
     }
@@ -218,7 +218,7 @@ export default function CartContextProvider({ children }) {
   }
 
   //Función que sirve para sacar algunos datos que van en las ordenes de compra
-  function itemIdTitlePrince() {
+  function itemIdTitlePrice() {
 
     const cartItemIdtitlePrice = onCart.map(product => {
       return { 
@@ -227,8 +227,7 @@ export default function CartContextProvider({ children }) {
         price: product.item.price,
         quantity: product.quantity
             }
-    }
-    )
+    })
 
     return cartItemIdtitlePrice;
 

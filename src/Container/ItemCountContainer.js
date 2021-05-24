@@ -1,9 +1,12 @@
 import React, { useContext, useState, useEffect } from "react";
 import ItemCount from "../components/ItemCount/ItemCount";
-import {CartContext} from '../Context/CartContext'
+import { CartContext } from "../Context/CartContext";
 
-export default function ItemCountContainer({product, setshowFinishBuy, productItem}) {
-  
+export default function ItemCountContainer({
+  product,
+  setshowFinishBuy,
+  productItem,
+}) {
   ///////////
   //ESTADOS//
   ///////////
@@ -14,10 +17,13 @@ export default function ItemCountContainer({product, setshowFinishBuy, productIt
   const [stock, setStock] = useState(5);
   // Ese useState de arriba debería hacer un llamado a la base de datos para saber la cantidad de stock que hay. Pero en la consigna nos piden que solo que tenga 5.
 
-  const {addItemContext} = useContext(CartContext)
+  const [notProductAdded, SetNotProductAdded] = useState(true);
+  // Chequea si se realizó la opción de agregar al carrito. Esto para que oculte el botón de agregar más productos
+
+  const { addItemContext } = useContext(CartContext);
   // Función que agrega item al contexto
 
-  const {setsomethingInCart} = useContext(CartContext)
+  const { setsomethingInCart } = useContext(CartContext);
   // Función que cambiar el valor para saber si hay algo en el carrto
 
   ///////////////
@@ -25,9 +31,9 @@ export default function ItemCountContainer({product, setshowFinishBuy, productIt
   ///////////////
 
   // Si hay cambios en el contador: Es decir si suma o resta productos se muestra este mensaje
-  useEffect( ()=> {
-    console.log('Se actualizó el componente de la botonera')
-  }, [item])
+  useEffect(() => {
+    console.log("Se actualizó el componente de la botonera");
+  }, [item]);
 
   ///////////////
   ///FUNCIONES///
@@ -40,29 +46,27 @@ export default function ItemCountContainer({product, setshowFinishBuy, productIt
     if (productItem) {
       //productItem está llegando desde el componente ITEM
 
-      addItemContext( { item: productItem, quantity: item} )
-
+      addItemContext({ item: productItem, quantity: item });
     } else {
       //product está llegando desde el componente ITEM DETAIL
-      addItemContext( { item: product, quantity: item} )
+      addItemContext({ item: product, quantity: item });
 
       // Setea en true para que el estado del ItemDetail que está en false cambie a true para que te muestre el botón de finalizar compra
 
       // setshowFinishBuy(true);
-
     }
 
     setsomethingInCart(true);
-
+    SetNotProductAdded(false);
   }
 
   // Función que suma +1 en el botón
   function onIncrement() {
-      if (stock > item) {
-          setItem(item + 1);
-      } else {
-          alert('No tenemos suficiente stock')
-      }
+    if (stock > item) {
+      setItem(item + 1);
+    } else {
+      alert("No tenemos suficiente stock");
+    }
   }
 
   // Función que suma -1 en el botón
@@ -79,11 +83,15 @@ export default function ItemCountContainer({product, setshowFinishBuy, productIt
   ////////////////////////////////
 
   return (
-    <ItemCount
-      onIncrement={onIncrement}
-      onDecrement={onDecrement}
-      itemQuantity={item}
-      onAdd={onAdd}
-    />
+    <>
+      {notProductAdded ? (
+        <ItemCount
+          onIncrement={onIncrement}
+          onDecrement={onDecrement}
+          itemQuantity={item}
+          onAdd={onAdd}
+        />
+      ) : null}
+    </>
   );
 }
