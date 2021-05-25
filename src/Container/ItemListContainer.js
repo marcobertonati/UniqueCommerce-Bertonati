@@ -48,9 +48,9 @@ export default function ItemListContainer() {
         {
             loading ?   <h5 style={{color:"white", backgroundColor:"#4a96ff", fontSize:"2rem",margin:"0.3rem", padding:"1rem", textAlign:"center", borderRadius:"40px"}}> CARGANDO PRODUCTOS ⌛</h5> :  
             
-                        <div className="itemListContainer container-fluid" style={{marginTop:'1rem'}}>
+                      
                         <ItemList item={item}/>
-                         </div>
+                 
 
         }
          </>

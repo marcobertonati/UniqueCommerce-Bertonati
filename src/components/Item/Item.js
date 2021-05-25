@@ -6,9 +6,12 @@ import {useContext} from 'react';
 import {CartContext} from '../../Context/CartContext'
 
 //Importo botones de boots-trap
-import { Card, Button, ButtonGroup } from "react-bootstrap";
+import { Card, Button } from "react-bootstrap";
 import ItemCountContainer from "../../Container/ItemCountContainer";
 import { useHistory } from "react-router-dom";
+import {Col} from 'react-bootstrap';
+import "./Item.css";
+
 
 export default function ShowItem({ productItem, image }) {
 
@@ -21,27 +24,25 @@ export default function ShowItem({ productItem, image }) {
   }
 
   return (
-    <Card style={{ width: "18rem", margin: "4px 2px 2px 2px" }}>
+    <Col lg={3} md={4} sm={6} className="col-card">
+    <Card>
       <Card.Img variant="top" src={image} />
       <Card.Body>
-        <Card.Title>{productItem.title}</Card.Title>
-        {/* <Card.Text>
-          Esta sería la descripción de todo el producto.
-        </Card.Text> */}
-        <Button
+        <Card.Title className="col-card__title">{productItem.title}</Card.Title>
+
+        <span className="col-card__span"
           onClick={() => history.push(`/item/${productItem.id}`)}
-          variant="primary"
         >
           Detalles del Producto
-        </Button>
-        <ItemCountContainer productItem={productItem} />
+        </span>
 
-   
+        <ItemCountContainer productItem={productItem} />
           {somethingInCart ? (
               <Button onClick={goCart}>Finalizar compra</Button>
           ) : null}
    
       </Card.Body>
     </Card>
+    </Col>
   );
 }

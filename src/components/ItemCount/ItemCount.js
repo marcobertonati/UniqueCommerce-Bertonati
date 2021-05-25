@@ -7,11 +7,11 @@ export default function ItemCount({ onIncrement, onDecrement, itemQuantity, onAd
   console.log(`Entro a ItemCount.js`)
 
   return (
-    <div className="productoCounter">
+    <div>
       <ButtonGroup size="lg" className="mb-2">
         <Button onClick={onDecrement}>-</Button>
 
-        <span className="setItemNumber">{itemQuantity}</span>
+        <div className="buttonGroup-button__quantityItem">{itemQuantity}</div>
 
         <Button onClick={onIncrement}>+</Button>
       </ButtonGroup>
@@ -26,19 +26,6 @@ export default function ItemCount({ onIncrement, onDecrement, itemQuantity, onAd
         ) : null 
         //Si es Null, no muestra
       }
-
-
-
-
-      {/* {
-        itemAdded ? (
-          <ButtonGroup size="lg" className="mb-2">
-            <Button onClick={()=>history.push('/cart')}>Finalizar compra</Button>
-          </ButtonGroup>
-        ) : null 
-      } */}
-      {/* Acá debería aparecer otro botón que aparezca cuando el estado de que hay algo en el carrito aparezca TERMINAR COMPRA */}
-
     </div>
   );
 }

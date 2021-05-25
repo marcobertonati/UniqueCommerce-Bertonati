@@ -1,19 +1,23 @@
 import React from "react";
 import Item from "./Item";
-import './ItemList.css'
+
+//Import React Bootstrap
+import { Container, Row } from "react-bootstrap";
+
+import "./ItemList.css";
 
 export default function ItemList({ item }) {
   return (
-    <div className="container-itemList row container-fluid">
-
-      {
-      
-      item.map((singleItem) => (
-
-      <Item image={singleItem.photo} key={singleItem.id} productItem={singleItem} />
-
-      ))}
-      
-    </div>
+    <Container fluid>
+      <Row className="row-itemList">
+        {item.map((singleItem) => (
+          <Item
+            image={singleItem.photo}
+            key={singleItem.id}
+            productItem={singleItem}
+          />
+        ))}
+      </Row>
+    </Container>
   );
 }
