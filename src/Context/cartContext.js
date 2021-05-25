@@ -233,6 +233,16 @@ export default function CartContextProvider({ children }) {
 
   }
 
+  //Función que lee cantidad de productos
+
+  function quantityProducts() {
+    let productQuantity = 0;
+    onCart.forEach((product) => { return (productQuantity = product.quantity + productQuantity)});
+    console.log('Esto devuelve QuantityProductos')
+    console.log('productQuantity')
+    return productQuantity;
+
+  }
 
 
   /////////////////////////////////
@@ -255,7 +265,8 @@ export default function CartContextProvider({ children }) {
         removeItem,
         clearCart,
         addOrder,
-        setOrder
+        setOrder,
+        quantityProducts
       }}
     >
       {children}

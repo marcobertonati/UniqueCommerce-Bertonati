@@ -66,8 +66,9 @@ export const getAllProducts = new Promise((resolve,reject) => {
             const idProduct = snapshot.docs.map(doc=>doc.data())
             resolve(snapshot.docs.map((doc)=> {
                 return  {
+                    ...doc.data(),
                     id: doc.id,
-                    ...doc.data()
+
                 }
             }))}
         )

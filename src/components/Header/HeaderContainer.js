@@ -1,19 +1,30 @@
 import React from "react";
-import {Container, Row, Col} from "react-bootstrap"
-import './HeaderContainer.css'
+import { Container, Row, Col } from "react-bootstrap";
+import "./HeaderContainer.css";
 
-
-export default function showHeader(props) {
+export default function ShowHeader() {
   return (
-    <Container fluid className="background-home">
+    <Container fluid className="container-header">
       <Row>
-        <Col><h2 className="h2-header">EL PRECIO JUSTO PARA LO ÚNICO</h2></Col>
-      </Row>
-      <Row>
-        <Col><h3>{props.greetings}! Donás más % de tu venta, mejor posicionado vas a estar. Agregamos valor a tus productos y tu marca.</h3></Col>
-      </Row>
-      <Row className="background-description">
-        <Col><h4>Chequeá todos nuestros productos 👇 </h4></Col>
+        <Col>
+          <Row>
+            <Col>
+              <h2 className="header-row-col__h2">
+                EL PRECIO JUSTO PARA LO ÚNICO
+              </h2>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <h3 className="header-row-col__h3">
+                Donás más % de tu venta, mejor posicionado estarás en nuestro
+                feed de productos. <strong>¡Chequeálos!</strong> 👇
+              </h3>
+            </Col>
+          </Row>
+        </Col>
+        <Col className="background-home">
+        </Col>
       </Row>
     </Container>
   );

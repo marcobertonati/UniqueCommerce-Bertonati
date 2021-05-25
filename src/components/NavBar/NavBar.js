@@ -29,64 +29,59 @@ import "./NavBar.css";
 
 // AQUÍ COMIENZA EL EXPORT DEFAULT
 export default function MostrarNavBar() {
+
+  // Consumos del CartContext
   const { onCart } = useContext(CartContext);
   const { somethingInCart } = useContext(CartContext);
-
-  //Función que lee la cantidad de productos que hay en el carrito
-  let productQuantity = 0;
-  onCart.forEach((product) => {
-    return (productQuantity = product.quantity + productQuantity);
-  });
+  const { quantityProducts } = useContext(CartContext);
 
   // Declaro history para navegación de botones
   let history = useHistory();
 
   return (
-    <div className="nav-bar">
-      <Navbar bg="light" expand="lg">
+    <nav>
+
+      <Navbar className="navbar-container" expand="lg" sticky="top">
+        
+         {/* Componente que trae el Name Branding */}
         <Navbar.Brand
           onClick={() => history.push("/")}
-          style={{ color: "white", fontWeight: "900" }}
         >
-          UNIQUE
+          <h1 className="navbar-container__title">UNIQUE 📦</h1>
         </Navbar.Brand>
-        {/* <Navbar.Brand onClick={()=>history.push('/')} href="#home">UNIQUE</Navbar.Brand> ASI VIENE DE FÁBRICA*/}
         
         {/* Componente que trae el cartWidget */}
-        <Navbar.Brand className="cart-widget">
+        <Navbar.Brand className="cartWidget-container">
           {somethingInCart ? (
             <>
               <CartWidget />
-              {/* <span>Total de productos {productQuantity}</span> */}
+              <span className="cartWidget-container__span">{quantityProducts()}</span>
             </>
           ) : null}
         </Navbar.Brand>
 
-        {/* Componente que trae la cantidad de productos */}
-        <Navbar.Brand>
-          {somethingInCart ? (
-            <div>
-              <span style={{color:"white"}}>Total de productos {productQuantity}</span>
-            </div>
-          ) : null}
-        </Navbar.Brand>
 
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Toggle aria-controls="basic-navbar-nav"/>
+        
         <Navbar.Collapse id="basic-navbar-nav">
+          
           <Nav className="mr-auto">
+
             <Nav.Link
               href="#home"
-              style={{ color: "white", fontWeight: "600" }}
+              className="navCollapse-nav__navLink"
             >
-              Nosotros
+              ¿Quiénes somos?
             </Nav.Link>
+            
             <Nav.Link
               href="#link"
-              style={{ color: "white", fontWeight: "600" }}
+              className="navCollapse-nav__navLink"
             >
-              Registrate
+              Contactanos
             </Nav.Link>
-            <NavDropdown title="Productos" id="basic-nav-dropdown">
+            
+            <NavDropdown title="Productos" id="basic-nav-dropdown" className="navCollapse-nav__navLink">
               <NavDropdown.Item
                 onClick={() => history.push("/category/anillos")}
               >
@@ -116,17 +111,9 @@ export default function MostrarNavBar() {
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>
-
-          <Form inline>
-            <FormControl
-              type="text"
-              placeholder="¿Qué querés buscar?"
-              className="mr-sm-2"
-            />
-            <Button variant="outline-success">Buscar</Button>
-          </Form>
         </Navbar.Collapse>
+        
       </Navbar>
-    </div>
+    </nav>
   );
 }
