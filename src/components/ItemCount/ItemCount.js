@@ -8,24 +8,25 @@ export default function ItemCount({ onIncrement, onDecrement, itemQuantity, onAd
 
   return (
     <div>
-      <ButtonGroup size="lg" className="mb-2">
+      <ButtonGroup size="md" className="mb-2">
         <Button onClick={onDecrement}>-</Button>
 
-        <div className="buttonGroup-button__quantityItem">{itemQuantity}</div>
+        {/* <div className="buttonGroup-button__quantityItem">{itemQuantity}</div> */}
 
         <Button onClick={onIncrement}>+</Button>
-      </ButtonGroup>
-      <br />
 
-      {
+        {
         //Si la cantidad de items es MAYOR a 0 (Es decir a partir de 1) se va a mostrar el boton a la cual mediante prop se le pasa la función onAdd que setea el producto y su cantidad
         itemQuantity > 0 ? (
-          <ButtonGroup size="lg" className="mb-2">
-            <Button onClick={onAdd}>Agregar al Carrito</Button>
-          </ButtonGroup>
+            <Button className="buttonGroup-button___addToCart" onClick={onAdd}>Agregar <strong>{itemQuantity}</strong> al Carrito</Button>
         ) : null 
         //Si es Null, no muestra
       }
+
+      </ButtonGroup>
+      <br />
+
+      
     </div>
   );
 }
