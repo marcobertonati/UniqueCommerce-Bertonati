@@ -1,9 +1,9 @@
+//Import React
 import React from "react";
-import "./Cart.css";
 
 //Importamos React Rout Dom
 import { useHistory } from "react-router-dom";
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 // Importo useContext
 import { useContext } from "react";
@@ -11,19 +11,21 @@ import { useContext } from "react";
 // Importo Contexto
 import { CartContext } from "../../Context/CartContext";
 
-export default function Cart() {
+//Import React Bootstrap
+import { Container, Row, Col, Button } from "react-bootstrap";
 
+
+//Import CSS
+import "./Cart.css";
+
+export default function Cart() {
   // Importo desde el contexto que hay en el carrito
   const { onCart } = useContext(CartContext);
   const { somethingInCart } = useContext(CartContext);
   const { removeItem } = useContext(CartContext);
-  const { clearCart } = useContext(CartContext)
-  // console.log(onCart);
-  // console.log(typeof (onCart));
-  // console.log(somethingInCart);
-  // console.log(typeof(removeItem))
+  const { clearCart } = useContext(CartContext);
 
-  let history = useHistory()
+  let history = useHistory();
 
   let total = 0;
 
@@ -32,65 +34,80 @@ export default function Cart() {
     console.log("Se ejecutó función totalAmount");
 
     if (onCart === undefined) {
-      return console.log('Aún no hay productos')
+      return console.log("Aún no hay productos");
     } else {
-
       onCart.forEach((productPrice) => {
         console.log(total);
         console.log(productPrice.item.price * productPrice.quantity);
-        return (total = total + productPrice.item.price * productPrice.quantity);
+        return (total =
+          total + productPrice.item.price * productPrice.quantity);
       });
-
     }
-
   }
-  totalAmount()
+  totalAmount();
 
   return (
-    <div>
-      <h1>Bienvenido a su carrito</h1>
+    <Container fluid>
+      <Row className="cart-row">
+        <span className="cart-row__h1">Bienvenido a su carrito 🛒</span>
+      </Row>
 
       {/* Si hay algo en el carrito renderizo el listado, o que no hay nada*/}
       {somethingInCart === false ? (
-        <h2 className="cart-h2">Usted no tiene productos en el carrito <Link to ={`/`}>¡Chequea todos nuestros productos!</Link></h2>
+        <Row className="cart-row">
+          <span className="cart-h2">
+            Usted no tiene productos en el carrito{" "}
+            <Link to={`/`}>¡Chequea todos nuestros productos!</Link>
+          </span>
+        </Row>
       ) : (
         onCart.map((product) => {
           return (
-            <ul key={product.item.id}>
-                <span>{product.item.title}</span>
-                <li>Cantidad: {product.quantity}</li>
-                <li>Precio: {product.item.price}</li>
-                <li>Total por producto: {product.item.price * product.quantity}</li>
-                <li><button onClick={()=>removeItem(product.item.id)} className={product.item.id}>-</button></li>
-            </ul>
+            <Row className="cart-row cart-row__border">
+              <ul className="cart-row__ul" key={product.item.id}>
+                <span className="cart-row__spanTitle">{product.item.title}</span>
+                <li className="cart-row__li">Cantidad: {product.quantity}</li>
+                <li className="cart-row__li">Precio: ${product.item.price}</li>
+                <li className="cart-row__li">
+                  Total por producto: ${product.item.price * product.quantity}
+                </li>
+                <li className="cart-row__liButton">
+                  <Button
+                    onClick={() => removeItem(product.item.id)}
+                    className={product.item.id}
+                  >
+                    Borrar uno
+                  </Button>
+                </li>
+              </ul>
+            </Row>
           );
         })
       )}
 
       {/* Si hay algo en el carrito renderizo el total */}
-      {
-          somethingInCart ?
-            <h5 style={{color: "black"}}>El total de su carrito es: {total}</h5>
-            :
-            null
-      }
 
-      {/* Si hay algo en el carrito renderizo el botón para vaciar */}
-      {
-          somethingInCart ?
-            <button onClick={clearCart}>Vaciar Carrito</button>
-            :
-            null
-      }
+      <Row className="cart-row">
+        <Col md={12} className="cart-row-colTotal">
+        {somethingInCart ? (
+          <span>El total de su carrito es ${total}</span>
+        ) : null}
+        </Col>
 
-      {/* Si hay algo en el carrito renderizo el botón para comprar */}
-      {
-          somethingInCart ?
-            <button onClick={()=>history.push("/checkout")}>¡Comprar!</button>
-            :
-            null
-      }
+        <Col>
+        {/* Si hay algo en el carrito renderizo el botón para vaciar */}
+        {somethingInCart ? (
+          <Button onClick={clearCart}>Vaciar Carrito</Button>
+        ) : null}
+        </Col>
 
-    </div>
+        <Col>
+        {/* Si hay algo en el carrito renderizo el botón para comprar */}
+        {somethingInCart ? (
+          <Button onClick={() => history.push("/checkout")}>¡Comprar!</Button>
+        ) : null}
+        </Col>
+      </Row>
+    </Container>
   );
 }

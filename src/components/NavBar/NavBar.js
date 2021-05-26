@@ -41,7 +41,7 @@ export default function MostrarNavBar() {
   return (
     <nav>
 
-      <Navbar className="navbar-container" expand="lg" sticky="top">
+      <Navbar className="navbar-container" expand="lg">
         
          {/* Componente que trae el Name Branding */}
         <Navbar.Brand

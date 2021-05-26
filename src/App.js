@@ -26,8 +26,10 @@ function App() {
     <CartContextProvider>
       <BrowserRouter>
         {/* El NavBar va a estar en todas las rutas */}
-        <NavBar />
-
+        <div style={{position: 'sticky', top: 0, zIndex:1020}}>
+        <NavBar/>
+        </div>
+        
         <Switch>
           {/* Ruta de home */}
           <Route exact path="/">

@@ -46,7 +46,7 @@ export default function ItemListContainer() {
 
         <>
         {
-            loading ?   <h5 style={{color:"white", backgroundColor:"#4a96ff", fontSize:"2rem",margin:"0.3rem", padding:"1rem", textAlign:"center", borderRadius:"40px"}}> CARGANDO PRODUCTOS ⌛</h5> :  
+            loading ?   <h5 style={{color:"white", backgroundColor:"#4a96ff", fontSize:"1rem",margin:"0.3rem", padding:"1rem", textAlign:"center", borderRadius:"40px"}}> CARGANDO PRODUCTOS ⌛</h5> :  
             
                       
                         <ItemList item={item}/>
