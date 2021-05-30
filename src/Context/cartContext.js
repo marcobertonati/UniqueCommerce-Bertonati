@@ -266,7 +266,8 @@ export default function CartContextProvider({ children }) {
         clearCart,
         addOrder,
         setOrder,
-        quantityProducts
+        quantityProducts,
+        totalAmount
       }}
     >
       {children}

@@ -4,6 +4,9 @@ import { CartContext } from "../Context/CartContext";
 //Importamos React Rout Dom
 import { useHistory } from "react-router-dom";
 
+//Importamos componente checkout
+import Checkout from '../components/Checkout/Checkout'
+
 export default function CheckOutContainer() {
   ///////////
   //ESTADOS//
@@ -13,10 +16,7 @@ export default function CheckOutContainer() {
   let history = useHistory();
 
   // Importo desde el contexto que hay en el carrito
-  const { onCart } = useContext(CartContext);
-  const { somethingInCart } = useContext(CartContext);
-  const { addOrder } = useContext(CartContext);
-  const { setOrder } = useContext(CartContext);
+  const { onCart, somethingInCart,addOrder, totalAmount } = useContext(CartContext);
 
   // Función de finalizar compra
   function finishBuy(e) {
@@ -26,6 +26,11 @@ export default function CheckOutContainer() {
     const nameBuyer = document.getElementById("name").value;
     const phoneBuyer = document.getElementById("phone").value;
     const emailBuyer = document.getElementById("email").value;
+
+    if (nameBuyer===" " || phoneBuyer===" " || emailBuyer===" " || nameBuyer==="" || phoneBuyer==="" || emailBuyer==="") {
+
+      return alert("¡Ingrese datos válidos! Espacios vacios serán rechazados ❌")
+    }
 
     const userInfo = {
       name: nameBuyer,
@@ -40,25 +45,14 @@ export default function CheckOutContainer() {
 
     addOrder(userInfo);
   }
-
+  
   return (
-    <div>
+    <>
       {somethingInCart ? (
-        <form>
-          <input id="name" type="text" placeholder="Apellido y Nombre"></input>
-          <input
-            id="phone"
-            type="text"
-            placeholder="Número de contacto"
-          ></input>
-          <input
-            id="email"
-            type="email"
-            placeholder="Correo electrónico"
-          ></input>
-          <button onClick={finishBuy}>Finalizar compra</button>
-        </form>
-      ) : <h2>¡Gracias por su compra!</h2>}
-    </div>
+        <Checkout finishBuy={finishBuy} totalAmount={totalAmount} />
+      ) : (
+        <h2>¡Gracias por su compra!</h2>
+      )}
+    </>
   );
 }
