@@ -19,7 +19,7 @@ import ItemCountContainer from "../../Container/ItemCountContainer";
 import { useHistory } from "react-router-dom";
 
 //Importo botones de boots-trap
-import { ButtonGroup, Button } from "react-bootstrap";
+import { Container, Row, Col, Button, ButtonGroup } from "react-bootstrap";
 
 
 
@@ -89,18 +89,19 @@ export default function ItemDetail({ product }) {
   ////////////////////////////////
 
   return (
-    <div className="itemDetail">
-      <h3 className="title-h3">DESCRIPCIÓN DE ITEMS</h3>
+    <Container fluid className="itemDetail-container">
+      <h3 className="itemDetail-container_h3">DETALLES DEL PRODUCTO 🔍</h3>
 
-      <div key={product.id}>
+      <Row key={product.id}>
         <img src={product.photo} alt={product.title}></img>
 
-        <ul>
-          <li>{product.title}</li>
-          <li>Descrpción: {product.description}</li>
-          <li>Precio: {product.price}</li>
+        <ul className="itemDetail-container__ul">
+          <li><strong>{product.title}</strong></li>
+          <li>Detalles: {product.description}</li>
+          <li>Precio por unidad: {product.price}</li>
+          <li>👇 ¡Agregá productos al carrito!</li>
         </ul>
-      </div>
+      </Row>
 
       {/* ITEM DELCONTADOR */}
       {
@@ -115,13 +116,13 @@ export default function ItemDetail({ product }) {
       {/* ITEM TERMINAR COMPRA: si colocó +1 en la botonera o en el CartContext existe algo previamente en el cart , ya te deja terminar la compra */}
       {showFinishBuy || somethingInCart ? 
       (
-        <ButtonGroup size="lg" className="mb-2">
-          <Button onClick={goCart}>
+        <>
+          <Button size="sm" onClick={goCart}>
             Finalizar compra
           </Button>
-          <p>Ya tienes items en tu carrito, puedes finalziar tu compra</p>
-        </ButtonGroup>
+          <div className="itemDetail-container__finishBuyText">Ya tienes items en tu carrito, puedes finalizar tu compra.</div>
+        </>
       ) : null}
-    </div>
+    </Container>
   );
 }

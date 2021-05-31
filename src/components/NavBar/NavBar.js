@@ -39,7 +39,9 @@ export default function MostrarNavBar() {
   let history = useHistory();
 
   return (
-    <nav>
+
+    
+    <nav style={{position: 'sticky', top: 0, zIndex:1020}}>
 
       <Navbar className="navbar-container" expand="lg">
         

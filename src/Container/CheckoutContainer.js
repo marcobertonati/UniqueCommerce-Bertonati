@@ -1,6 +1,9 @@
 import React, { useContext, useState, useEffect } from "react";
 import { CartContext } from "../Context/CartContext";
 
+import { Container } from "react-bootstrap";
+
+
 //Importamos React Rout Dom
 import { useHistory } from "react-router-dom";
 
@@ -51,7 +54,7 @@ export default function CheckOutContainer() {
       {somethingInCart ? (
         <Checkout finishBuy={finishBuy} totalAmount={totalAmount} />
       ) : (
-        <h2>¡Gracias por su compra!</h2>
+        <Container fluid style={{fontFamily: 'Work Sans', fontWeight: '600', fontSize:'2rem', color:"#4a96ff"}}>¡Gracias por su compra! 😃👌</Container>
       )}
     </>
   );

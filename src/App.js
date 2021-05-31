@@ -11,6 +11,7 @@ import ItemListContainer from "./Container/ItemListContainer";
 import ItemDetailContainer from "./Container/ItemDetailContainer";
 import CheckoutContainer from "./Container/CheckoutContainer";
 import Cart from "./components/Cart/Cart";
+import Footer from './components/Footer/Footer'
 
 //Contextos
 import CartContextProvider from "./Context/CartContext";
@@ -26,9 +27,7 @@ function App() {
     <CartContextProvider>
       <BrowserRouter>
         {/* El NavBar va a estar en todas las rutas */}
-        <div style={{position: 'sticky', top: 0, zIndex:1020}}>
         <NavBar/>
-        </div>
         
         <Switch>
           {/* Ruta de home */}
@@ -72,6 +71,8 @@ function App() {
           <CustomInputContainer placeholder ="hola" /> 
         </Route> */}
         </Switch>
+      
+      <Footer />
       </BrowserRouter>
     </CartContextProvider>
     
