@@ -35,9 +35,8 @@ export async function addOrders(newOrder) {
         .then(
             ({id}) => {
                 console.log('Resolvio promesa')
-                alert('Resolvio promesa')
                 alert('¡Compra finalizada')
-                alert(`Este es su id de comprobante ${id}`)
+                alert(`Este es su id de comprobante 👉 ${id} 👈`)
              })
         .catch(
             (err) => {
@@ -60,9 +59,9 @@ export const getAllProducts = new Promise((resolve,reject) => {
     itemCollection.get()
         // Este .then sería el equivalente al .JSON que jsonifica y te trae cada elemento
         .then(snapshot => {
-            console.log('SERVICES > FUNCIÓN GETALLPRODUCTS')
-            console.log(snapshot.docs.map(e=>e.data()))
-            console.log(snapshot.docs.map(e=>e.id))
+            // console.log('SERVICES > FUNCIÓN GETALLPRODUCTS')
+            // console.log(snapshot.docs.map(e=>e.data()))
+            // console.log(snapshot.docs.map(e=>e.id))
             const idProduct = snapshot.docs.map(doc=>doc.data())
             resolve(snapshot.docs.map((doc)=> {
                 return  {
@@ -107,12 +106,23 @@ export async function getProductsById(id) {
     
     const itemRef = await itemCollection.get();
 
-    console.log(itemRef)
+    // console.log('Esto trae ITEM REF')
+    // console.log(itemRef)
+    
     const [productFinded] = itemRef.docs.filter(product=> product.id === id).map(product=>product.data())
+    const [idProductFinded] = itemRef.docs.filter(product=> product.id === id).map(product=>product.id)
 
         // Recortar que en el 'const [productFinded] lo utilizo entre corchetes [] porque lo que devuelve el fiter es un array con un objeto adentro. Por lo cual cuando yo lo pongo entre [] lo devuelve desestructurado. También que utilizo == ya que devuelve un STRING y el otro es un NUMBER. Podría parsearlo para que sea más óptimo.
 
-    return productFinded;     
+    const finalProductfinded = {
+        ...productFinded,
+        id: idProductFinded
+    }
+
+    // console.log('ESTO DEVUELVE finalProductfinded')
+    // console.log(finalProductfinded)
+
+    return finalProductfinded;     
 
 } 
 

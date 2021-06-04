@@ -3,12 +3,11 @@ import { CartContext } from "../Context/CartContext";
 
 import { Container } from "react-bootstrap";
 
-
 //Importamos React Rout Dom
 import { useHistory } from "react-router-dom";
 
 //Importamos componente checkout
-import Checkout from '../components/Checkout/Checkout'
+import Checkout from "../components/Checkout/Checkout";
 
 export default function CheckOutContainer() {
   ///////////
@@ -19,7 +18,8 @@ export default function CheckOutContainer() {
   let history = useHistory();
 
   // Importo desde el contexto que hay en el carrito
-  const { onCart, somethingInCart,addOrder, totalAmount } = useContext(CartContext);
+  const { onCart, somethingInCart, addOrder, totalAmount } =
+    useContext(CartContext);
 
   // Función de finalizar compra
   function finishBuy(e) {
@@ -29,33 +29,56 @@ export default function CheckOutContainer() {
     const nameBuyer = document.getElementById("name").value;
     const phoneBuyer = document.getElementById("phone").value;
     const emailBuyer = document.getElementById("email").value;
+    const emailConfirmBuyer = document.getElementById("emailConfirm").value;
 
-    if (nameBuyer===" " || phoneBuyer===" " || emailBuyer===" " || nameBuyer==="" || phoneBuyer==="" || emailBuyer==="") {
+    if (emailBuyer === emailConfirmBuyer) {
+      if (
+        nameBuyer === " " ||
+        phoneBuyer === " " ||
+        emailBuyer === " " ||
+        nameBuyer === "" ||
+        phoneBuyer === "" ||
+        emailBuyer === ""
+      ) {
+        return alert(
+          "¡Ingrese datos válidos! Espacios vacios serán rechazados ❌"
+        );
+      }
 
-      return alert("¡Ingrese datos válidos! Espacios vacios serán rechazados ❌")
+      const userInfo = {
+        name: nameBuyer,
+        phone: phoneBuyer,
+        email: emailBuyer,
+      };
+
+      console.log("Estos son los datos de la orden de compra");
+      console.log(userInfo);
+      console.log("Estos son los procutos de la compra");
+      console.log(onCart);
+
+      addOrder(userInfo);
+    } else {
+      alert("¡Cuidado! Sus emails no coinciden");
     }
-
-    const userInfo = {
-      name: nameBuyer,
-      phone: phoneBuyer,
-      email: emailBuyer,
-    };
-
-    console.log("Estos son los datos de la orden de compra");
-    console.log(userInfo);
-    console.log("Estos son los procutos de la compra");
-    console.log(onCart);
-
-    addOrder(userInfo);
   }
-  
-  return (
-    <>
-      {somethingInCart ? (
-        <Checkout finishBuy={finishBuy} totalAmount={totalAmount} />
-      ) : (
-        <Container fluid style={{fontFamily: 'Work Sans', fontWeight: '600', fontSize:'2rem', color:"#4a96ff"}}>¡Gracias por su compra! 😃👌</Container>
-      )}
-    </>
-  );
-}
+
+    return (
+      <>
+        {somethingInCart ? (
+          <Checkout finishBuy={finishBuy} totalAmount={totalAmount} />
+        ) : (
+          <Container
+            fluid
+            style={{
+              fontFamily: "Work Sans",
+              fontWeight: "600",
+              fontSize: "2rem",
+              color: "#4a96ff",
+            }}
+          >
+            ¡Gracias por su compra! 😃👌
+          </Container>
+        )}
+      </>
+    )
+  }
