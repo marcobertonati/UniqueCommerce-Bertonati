@@ -53,7 +53,8 @@ function App() {
             <HeaderContainer />
           </Route>
         </Switch>
-      
+
+      {/* El Footer va a estar en todas las rutas */}
       <Footer />
 
       </BrowserRouter>
