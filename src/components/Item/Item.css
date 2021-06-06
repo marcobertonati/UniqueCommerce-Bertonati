@@ -19,6 +19,7 @@
 .col-card__span{
     font-family: 'Work Sans', sans-serif;
     cursor: pointer;
+    margin-right: 0.2rem;
 }
 
 .col-card__span:hover{

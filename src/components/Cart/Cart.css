@@ -50,3 +50,12 @@
     margin-bottom: 2rem;
 
 }
+
+.cart-row__buttons{
+    display: flex;
+    justify-content: space-around;
+}
+
+.cart-row__button{
+    margin: 0rem 0.2rem
+}

@@ -13,77 +13,52 @@ import { CartContext } from "../../Context/CartContext";
 //Importo Icono
 import CartWidget from "../CartWidget/CartWidget.js";
 
-//Importamos componente
-import {
-  Navbar,
-  Nav,
-  NavDropdown,
-  Form,
-  FormControl,
-  Button,
-} from "react-bootstrap";
+//Importamos componentes de React-Bootstrap
+import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 
 //Importamos estilos CSS de BOOTSTRAP
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./NavBar.css";
 
-// AQUÍ COMIENZA EL EXPORT DEFAULT
-export default function MostrarNavBar() {
-
+export default function NavBar() {
+  
   // Consumos del CartContext
-  const { onCart } = useContext(CartContext);
   const { somethingInCart } = useContext(CartContext);
-  const { quantityProducts } = useContext(CartContext);
 
   // Declaro history para navegación de botones
   let history = useHistory();
 
   return (
-
-    
-    <nav style={{position: 'sticky', top: 0, zIndex:1020}}>
+    <div style={{ position: "sticky", top: 0, zIndex: 1020 }}>
 
       <Navbar className="navbar-container" expand="lg">
-        
-         {/* Componente que trae el Name Branding */}
-        <Navbar.Brand
-          onClick={() => history.push("/")}
-        >
+        {/* Componente que trae el Name Branding */}
+        <Navbar.Brand onClick={() => history.push("/")}>
           <h1 className="navbar-container__title">UNIQUE 📦</h1>
         </Navbar.Brand>
-        
+
         {/* Componente que trae el cartWidget */}
         <Navbar.Brand className="cartWidget-container">
-          {somethingInCart ? (
-            <>
-              <CartWidget />
-              <span className="cartWidget-container__span">{quantityProducts()}</span>
-            </>
-          ) : null}
+          {somethingInCart ? <CartWidget /> : null}
         </Navbar.Brand>
 
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
-        <Navbar.Toggle aria-controls="basic-navbar-nav"/>
-        
         <Navbar.Collapse id="basic-navbar-nav">
-          
           <Nav className="mr-auto">
-
-            <Nav.Link
-              href="#home"
-              className="navCollapse-nav__navLink"
-            >
+            <Nav.Link href="#home" className="navCollapse-nav__navLink">
               ¿Quiénes somos?
             </Nav.Link>
-            
-            <Nav.Link
-              href="#link"
-              className="navCollapse-nav__navLink"
-            >
+
+            <Nav.Link href="#link" className="navCollapse-nav__navLink">
               Contactanos
             </Nav.Link>
-            
-            <NavDropdown title="Productos" id="basic-nav-dropdown" className="navCollapse-nav__navLink">
+
+            <NavDropdown
+              title="Productos"
+              id="basic-nav-dropdown"
+              className="navCollapse-nav__navLink"
+            >
               <NavDropdown.Item
                 onClick={() => history.push("/category/anillos")}
               >
@@ -104,18 +79,10 @@ export default function MostrarNavBar() {
               >
                 Gorras
               </NavDropdown.Item>
-
-              {/* <NavDropdown.Item href="#action/3.4">Gorras</NavDropdown.Item> ESTA ES LA ESTRUCTURA BASE QUE VENIA*/}
-
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.5">
-                ¿Cómo funciona la subasta?
-              </NavDropdown.Item>
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>
-        
       </Navbar>
-    </nav>
+    </div>
   );
 }

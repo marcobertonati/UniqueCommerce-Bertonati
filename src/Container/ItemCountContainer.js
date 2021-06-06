@@ -1,21 +1,23 @@
+//Importamos React y hooks
 import React, { useContext, useState, useEffect } from "react";
+
+//Importo componente
 import ItemCount from "../components/ItemCount/ItemCount";
+
+//Importo contexto
 import { CartContext } from "../Context/CartContext";
+
 
 export default function ItemCountContainer({
   product,
-  setshowFinishBuy,
   productItem,
 }) {
-  ///////////
-  //ESTADOS//
-  ///////////
 
-  const [item, setItem] = useState(0);
+  const [itemQuantity, setItemQuantity] = useState(0);
   //Cantidad de item que pusiste en el contador
 
   const [stock, setStock] = useState(5);
-  // Ese useState de arriba debería hacer un llamado a la base de datos para saber la cantidad de stock que hay. Pero en la consigna nos piden que solo que tenga 5.
+  // Cantidad de stock que hay. Esto en proyectos donde realmente tengamos un stock debería ser consumido desde la base de datos y consultar cuántos hay actualmente.
 
   const [notProductAdded, SetNotProductAdded] = useState(true);
   // Chequea si se realizó la opción de agregar al carrito. Esto para que oculte el botón de agregar más productos
@@ -24,71 +26,59 @@ export default function ItemCountContainer({
   // Función que agrega item al contexto
 
   const { setsomethingInCart } = useContext(CartContext);
-  // Función que cambiar el valor para saber si hay algo en el carrto
+  // Función que cambiar el valor para saber si hay algo en el carro
 
-  ///////////////
-  //USE EFFECTS//
-  ///////////////
 
   // Si hay cambios en el contador: Es decir si suma o resta productos se muestra este mensaje
   useEffect(() => {
     console.log("Se actualizó el componente de la botonera");
-  }, [item]);
+  }, [itemQuantity]);
 
-  ///////////////
-  ///FUNCIONES///
-  ///////////////
 
   // Función onADD que lo que setea es los items y los pasa a ItemDetail
   function onAdd() {
     // Setea el producto que traemos de item detail y la cantidad que responde a la que puso en el contador (item)
-
+    
     if (productItem) {
       //productItem está llegando desde el componente ITEM
+      addItemContext({ item: productItem, quantity: itemQuantity });
 
-      addItemContext({ item: productItem, quantity: item });
     } else {
       //product está llegando desde el componente ITEM DETAIL
-      addItemContext({ item: product, quantity: item });
-
-      // Setea en true para que el estado del ItemDetail que está en false cambie a true para que te muestre el botón de finalizar compra
-
-      // setshowFinishBuy(true);
+      addItemContext({ item: product, quantity: itemQuantity });
     }
 
     setsomethingInCart(true);
     SetNotProductAdded(false);
+    
   }
 
   // Función que suma +1 en el botón
   function onIncrement() {
-    if (stock > item) {
-      setItem(item + 1);
+    if (stock > itemQuantity) {
+      setItemQuantity(itemQuantity + 1);
     } else {
-      alert("No tenemos suficiente stock");
+      alert("¡No tenemos suficiente stock!");
     }
   }
 
   // Función que suma -1 en el botón
   function onDecrement() {
-    if (item > 1) {
-      setItem(item - 1);
+    if (itemQuantity > 0) {
+      setItemQuantity(itemQuantity - 1);
     } else {
       alert("Tiene que agregar al menos un producto");
     }
   }
 
-  ////////////////////////////////
-  ///¿Qué exporta el componente?//
-  ////////////////////////////////
-
+ 
   return (
     <>
       {notProductAdded ? (
         <ItemCount
           onIncrement={onIncrement}
           onDecrement={onDecrement}
-          itemQuantity={item}
+          itemQuantity={itemQuantity}
           onAdd={onAdd}
         />
       ) : null}

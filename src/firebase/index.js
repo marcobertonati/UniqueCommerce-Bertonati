@@ -1,3 +1,4 @@
+//Importo FireBase
 import firebase from 'firebase'
 
 const firebaseConfig = {

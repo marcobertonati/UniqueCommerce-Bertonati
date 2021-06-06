@@ -1,24 +1,29 @@
-import React, { useContext, useState, useEffect } from "react";
-import { CartContext } from "../Context/CartContext";
-
-import { Container } from "react-bootstrap";
+// Importo React y sus Hooks
+import React, { useContext, useState } from "react";
 
 //Importamos React Rout Dom
 import { useHistory } from "react-router-dom";
 
+// Importo contexto
+import { CartContext } from "../Context/CartContext";
+
+//Importo Componente de Reacto Boostrap
+import { Container } from "react-bootstrap";
+
 //Importamos componente checkout
 import Checkout from "../components/Checkout/Checkout";
 
+
 export default function CheckOutContainer() {
-  ///////////
-  //ESTADOS//
-  ///////////
 
   // Importo History
   let history = useHistory();
+  
+  const [completeInput, setCompleteInput] = useState(false);
+
 
   // Importo desde el contexto que hay en el carrito
-  const { onCart, somethingInCart, addOrder, totalAmount } =
+  const { somethingInCart, addOrder, totalAmount } =
     useContext(CartContext);
 
   // Función de finalizar compra
@@ -32,6 +37,7 @@ export default function CheckOutContainer() {
     const emailConfirmBuyer = document.getElementById("emailConfirm").value;
 
     if (emailBuyer === emailConfirmBuyer) {
+     
       if (
         nameBuyer === " " ||
         phoneBuyer === " " ||
@@ -51,21 +57,37 @@ export default function CheckOutContainer() {
         email: emailBuyer,
       };
 
-      console.log("Estos son los datos de la orden de compra");
-      console.log(userInfo);
-      console.log("Estos son los procutos de la compra");
-      console.log(onCart);
-
       addOrder(userInfo);
+
     } else {
       alert("¡Cuidado! Sus emails no coinciden");
+    }
+  }
+
+  function onHandleInputChange() {
+
+    const nameBuyer = document.getElementById("name").value;
+    const phoneBuyer = document.getElementById("phone").value;
+    const emailBuyer = document.getElementById("email").value;
+    const emailConfirmBuyer = document.getElementById("emailConfirm").value;
+
+    if (
+      emailBuyer === emailConfirmBuyer &&
+      emailBuyer !== "" &&
+      emailBuyer !== " " &&
+      emailConfirmBuyer !== "" &&
+      emailConfirmBuyer !== " "
+    ) {
+      setCompleteInput(true);
+    } else {
+      setCompleteInput(false);
     }
   }
 
     return (
       <>
         {somethingInCart ? (
-          <Checkout finishBuy={finishBuy} totalAmount={totalAmount} />
+          <Checkout completeInput={completeInput} onHandleInputChange={onHandleInputChange} finishBuy={finishBuy} totalAmount={totalAmount} />
         ) : (
           <Container
             fluid

@@ -1,6 +1,5 @@
 //Importo para crear contexto
 import { createContext, useState } from "react";
-import { ThemeProvider } from "react-bootstrap";
 
 //Importo SERVICE para postear item
 import {addOrders} from '../Services/Services'
@@ -10,7 +9,6 @@ import {dateFirebase} from '../Services/Services'
 
 // Exporto contexto
 export const CartContext = createContext([]);
-
 
 // ¿Qué exporta CartContext
 export default function CartContextProvider({ children }) {
@@ -35,25 +33,16 @@ export default function CartContextProvider({ children }) {
 
   // Función que setea en el contexto de carrito el producto que le llega desde ItemDetail
   function addItemContext(product) {
-    //por las dudas, el 'product' es un objeto que está divido en 2 propiedades: product.item, es el item en si mismo... y product.quantity es la cantidad que agregó de ese producto
-    console.log(`Se ejecutó la function addItemContext que trae este producto:`);
-    console.log(product)
+    //El 'product' es un objeto que está divido en 2 propiedades: product.item, es el item en si mismo... y product.quantity es la cantidad que agregó de ese producto
 
     if (isInCart(product)) {
-      console.log("Esto trae product id");
-      console.log(product.item.id);
-
+    
       const newQuantity = product.quantity;
       const [oldProduct] = onCart.filter(
         (onCartProduct) => onCartProduct.item.id === product.item.id
       );
+
       const oldQuantity = oldProduct.quantity;
-      console.log("Esto trae newQuantity");
-      console.log(newQuantity);
-      console.log("Esto trae oldProduct");
-      console.log(oldProduct);
-      console.log("Esto trae oldQuantity");
-      console.log(oldQuantity);
 
       const [newProduct] = [
           {
@@ -75,28 +64,16 @@ export default function CartContextProvider({ children }) {
         (onCartProduct) => onCartProduct.item.id !== product.item.id
       );
 
-
-    //   console.log(newProduct);
       return setonCart([...newCart,newProduct]);
     }
 
     //Seteo en el carro el producto que me llega si no existe nada
     setonCart([...onCart, product]);
 
-    // Porque no funciona push?
-    // setonCart(onCart.push(product))
-
-    //¿Por qué onCart es un objeto ¿No es un arra?
-    console.log(typeof(onCart));
-    console.log(onCart);
   }
 
   // Función que chequea si existe previamente un producto. Esta sirve para que si existe no agrege otro objeto al array, sino que lo agregue al ya existente.
   function isInCart(product) {
-
-    console.log(product)
-    console.log(typeof(product))
-
 
     if(product.item.id===undefined) {
 
@@ -107,7 +84,7 @@ export default function CartContextProvider({ children }) {
         return onCart.some(
           (productOnCart) => productOnCart.item.id === product.item.id
         );
-
+        //El .some retorna un booleano. Es decir la función si no encuentra que haya ID en el carrito es porque está vació. Si encuentra que hay ID se fija si coinciden con el producto que está agregando. Si está dice TRUE, si no está dice FALSE.
     }
   }
 
@@ -120,16 +97,10 @@ export default function CartContextProvider({ children }) {
 
   // Función sacar item de la canasta
   function removeItem (id) {
-    console.log(`Soy función removeItem`)
-    console.log(`Soy el producto con id ${id}`)
-    
-    const [productToBeRest] = onCart.filter(product => product.item.id === id )
-    console.log('Esto productToBeRest')
-    console.log(productToBeRest)
 
+    const [productToBeRest] = onCart.filter(product => product.item.id === id );
+   
     const newCart = onCart.filter(product => product.item.id !== id )
-    console.log('Esto trae newCart')
-    console.log(newCart)
 
     
     if(productToBeRest.quantity < 1 ) {
@@ -157,14 +128,12 @@ export default function CartContextProvider({ children }) {
         }
 
         //Si ese producto tiene la cantidad +1, entonces se setea
-        console.log('Esto traeNewRestedProducto')
-        console.log(newRestedProducto)
-    
         return setonCart([newRestedProducto,...newCart])
 
     }
     
   }
+
 
   /////////////////////////////
   //FUNCIONES PARA LA ORDERS //
@@ -173,9 +142,6 @@ export default function CartContextProvider({ children }) {
   // Función para setear orden
   async function addOrder(userInfo) {
 
-    console.log('Esto llega de userInfo')
-    console.log(userInfo)
-
     const newOrder = {
       buyer: {...userInfo},
       items: itemIdTitlePrice(),
@@ -183,20 +149,16 @@ export default function CartContextProvider({ children }) {
       total: totalAmount(),
     }
 
-    console.log('Esta es la orden')
     console.log(newOrder)
 
     setOrder(newOrder)
     await addOrders(newOrder)
-
-    console.log('Finalizó el proceso de order')
   
     setOrder({})
     setonCart([])
     setsomethingInCart(false)
 
   }
-
 
 
   ////////////////////////////////
@@ -217,7 +179,7 @@ export default function CartContextProvider({ children }) {
     
   }
 
-  //Función que sirve para sacar algunos datos que van en las ordenes de compra
+  //Función que sirve para obtener algunos datos que van en las ordenes de compra
   function itemIdTitlePrice() {
 
     const cartItemIdtitlePrice = onCart.map(product => {
@@ -233,26 +195,17 @@ export default function CartContextProvider({ children }) {
 
   }
 
-  //Función que lee cantidad de productos
-
+  //Función que devuelve cantidad de productos
   function quantityProducts() {
     let productQuantity = 0;
     onCart.forEach((product) => { return (productQuantity = product.quantity + productQuantity)});
-    console.log('Esto devuelve QuantityProductos')
-    console.log('productQuantity')
     return productQuantity;
-
   }
 
 
-  /////////////////////////////////
-  //¿QUÉ TRAE EL CART A LA ORDER //
-  /////////////////////////////////
-
   console.log('SOY CART DE CARTCONTEXT 🛒👇')
   console.log(onCart)
-  console.log('SOY CART ORDER DE CARTCONTEXT 📋👇')
-  console.log(order)
+
 
   return (
     <CartContext.Provider

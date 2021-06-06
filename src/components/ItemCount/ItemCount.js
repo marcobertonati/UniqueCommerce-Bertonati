@@ -1,18 +1,20 @@
+//Importamos React
 import React from "react";
+
+//Importamos componentes de React
 import { ButtonGroup, Button } from "react-bootstrap";
 
+//Importamos CSS
 import "./ItemCount.css";
 
+
 export default function ItemCount({ onIncrement, onDecrement, itemQuantity, onAdd }) {
-  console.log(`Entro a ItemCount.js`)
 
   return (
     <div>
       <ButtonGroup size="md" className="mb-2">
+
         <Button onClick={onDecrement}>-</Button>
-
-        {/* <div className="buttonGroup-button__quantityItem">{itemQuantity}</div> */}
-
         <Button onClick={onIncrement}>+</Button>
 
         {
@@ -24,9 +26,6 @@ export default function ItemCount({ onIncrement, onDecrement, itemQuantity, onAd
       }
 
       </ButtonGroup>
-      <br />
-
-      
     </div>
   );
 }

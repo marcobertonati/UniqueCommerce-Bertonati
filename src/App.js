@@ -1,6 +1,3 @@
-//Importamos APP
-import "./App.css";
-
 //Importamos React Router Dom para routear
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
@@ -13,13 +10,8 @@ import CheckoutContainer from "./Container/CheckoutContainer";
 import Cart from "./components/Cart/Cart";
 import Footer from './components/Footer/Footer'
 
-//Contextos
+//Importamos contexto
 import CartContextProvider from "./Context/CartContext";
-
-//Componetes Testing: quizás sea esto molesto, pero me ayuda mucho para ir probando con clase en vivo.
-// import TestContainer from "./Container/EventReactContainer";
-// import AddEventListenerContainers from "./Container/AddEventListenerContainers";
-// import CustomInputContainer from "./Container/CustomInputContainer";
 
 function App() {
   return (
@@ -60,20 +52,12 @@ function App() {
           <Route path="/not-logged">
             <HeaderContainer />
           </Route>
-
-          {/* Ruta de testing */}
-          {/* <Route path="/testRoute">
-          <AppContext.Provider value={["pantalon", "pantuflas"]}>
-            <AddEventListenerContainers />
-          </AppContext.Provider>
-          <TestContainer />
-          <AddEventListenerContainers />
-          <CustomInputContainer placeholder ="hola" /> 
-        </Route> */}
         </Switch>
       
       <Footer />
+
       </BrowserRouter>
+
     </CartContextProvider>
     
   );
