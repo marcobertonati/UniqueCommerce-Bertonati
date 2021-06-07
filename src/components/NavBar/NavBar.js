@@ -50,10 +50,6 @@ export default function NavBar() {
               ¿Quiénes somos?
             </Nav.Link>
 
-            <Nav.Link href="#link" className="navCollapse-nav__navLink">
-              Contactanos
-            </Nav.Link>
-
             <NavDropdown
               title="Productos"
               id="basic-nav-dropdown"

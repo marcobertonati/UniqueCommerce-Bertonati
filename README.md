@@ -1,10 +1,19 @@
 # UNIQUE 🛒
 
-_UNIQUE es una plataforma e-commerce que busca ayudar a causas benéficas y a la vez a los/as vendedores._
+_UNIQUE es una plataforma e-commerce que busca ayudar a causas benéficas y a sus vendedores. La plataforma buscar vender aquellos productos que consideramos únicos ¿Y cómo ponerle precio a lo único? No es nada fácil._
+
+## ¿Cómo funciona? 💡
+
+La plataforma buscar tener un user flow bastante simple para lograr una ventas rápida ¡Chequea los links para que veas como funciona!
+```
+https://drive.google.com/file/d/1rgUsY3KukHGCjJbp5UNhksrzErJRGmvz/view?usp=sharing
+```
 
 ## Desarrollo 💻
 
 El desarrollo de la web es enteramente a partir de ReactJS. A su vez, consume el módulo de react-bootstrap 1.5.2 para fines estéticos y de organización visual. En un futuro se planea eliminar los componentes standard, como por ejemplo los botones, y desarrollar propios que respondan al branding de la marca UNIQUE.
+
+También se ha optado por utilizar emojis en la mayoría de las casos. Esto a manejar de que la página cargue lo más rápido posible ya que cuando se comiencen a acumular productos puede romper con nuestra misión de realizar compras rápidas.
 
 ## Reminder de como visualizar el proyecto 💻
 
@@ -32,7 +41,7 @@ npm install
 npm start
 ```
 
-## Arquitectura 💡
+## Arquitectura 🦴
 
 El proyecto se encuentra divido en componentes que se visualizan, y cotenedores que manejan toda la lógica y datos que van a pasar a través de props a sus componentes hijos.
 
@@ -44,13 +53,13 @@ Existen 4 Containers que manejan toda la lógica de la página:
 
 * ItemDetailContainer.js => Funciona de la misma manera que ItemListContainer, pero dicho contenedor solo renderiza un item en particular con todos los datos que trae de la promesa fetch a la base de datos de Firebase. Ese item en particular es tomado a partir del boton 'Ver Detalles' y renderiza el componente ItemDetail.js
 
-* ItemCountContainer => Maneja la lógica acerca de los items que se van a ir agregando al carrito. Este contenedor es renderizado dentro del ItemDetailContainer e ItemListContainer. 
+* ItemCountContainer => Maneja la lógica acerca de los items que se van a ir agregando al carrito. Este contenedor es renderizado dentro del ItemDetailContainer e ItemListContainer. La decisión de colocarlo también en las cards es en torno a la filosofía del e-commerce de dar las opciones más rápidas para cerrar una compra.
 
 * CheckoutContainer => Maneja la lógica que muestra toda la información de los productos agregados en el carrito y los datos de quien solicita comprarlos.
 
 ## Lo que se viene 🛠️
 _En proceso..._ 
-* ¡Podrás cargar tus productos teniendo una cuetna registrada y verificada!
+* ¡Podrás cargar tus productos teniendo una cuenta registrada y verificada!
 * En el feed de nuestra home aparecerán en el top los productos que mayor porcentaje de donación en la venta tengan.
 
 ## Autores [@marco.bertonati](https://www.linkedin.com/in/marcobertonati/) ✒️

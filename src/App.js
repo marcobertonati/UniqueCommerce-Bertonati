@@ -47,11 +47,6 @@ function App() {
            <Route path="/checkout">
             <CheckoutContainer />
           </Route>
-
-          {/* Ruta si no estás logueado */}
-          <Route path="/not-logged">
-            <HeaderContainer />
-          </Route>
         </Switch>
 
       {/* El Footer va a estar en todas las rutas */}

@@ -20,7 +20,7 @@ export async function addOrders(newOrder) {
     await ordersCollection.add(newOrder)
         .then(
             ({id}) => {
-                alert('¡Compra finalizada')
+                alert('¡Compra finalizada! ✅')
                 alert(`Este es su id de comprobante 👉 ${id} 👈`)
              })
         .catch(
