@@ -46,7 +46,7 @@ export default function NavBar() {
 
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link href="#home" className="navCollapse-nav__navLink">
+            <Nav.Link onClick={() => history.push("/about")} className="navCollapse-nav__navLink">
               ¿Quiénes somos?
             </Nav.Link>
 

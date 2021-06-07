@@ -9,6 +9,7 @@ import ItemDetailContainer from "./Container/ItemDetailContainer";
 import CheckoutContainer from "./Container/CheckoutContainer";
 import Cart from "./components/Cart/Cart";
 import Footer from './components/Footer/Footer'
+import About from './components/About/About'
 
 //Importamos contexto
 import CartContextProvider from "./Context/CartContext";
@@ -34,7 +35,7 @@ function App() {
           </Route>
 
           {/* Ruta de item en particular */}
-          <Route path="/item/:id">
+          <Route exact path="/item/:id">
             <ItemDetailContainer />
           </Route>
 
@@ -46,6 +47,11 @@ function App() {
            {/* Ruta de carrito */}
            <Route path="/checkout">
             <CheckoutContainer />
+          </Route>
+
+           {/* Ruta de quienes somos */}
+           <Route path="/about">
+            <About />
           </Route>
         </Switch>
 

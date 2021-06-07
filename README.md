@@ -1,10 +1,10 @@
 # UNIQUE 🛒
 
-_UNIQUE es una plataforma e-commerce que busca ayudar a causas benéficas y a sus vendedores. La plataforma buscar vender aquellos productos que consideramos únicos ¿Y cómo ponerle precio a lo único? No es nada fácil._
+_UNIQUE es una plataforma e-commerce que ayuda a causas benéficas y a sus vendedores. Buscar vender aquellos productos que consideramos únicos ¿Y cómo ponerle precio a lo único? No es nada fácil._
 
 ## ¿Cómo funciona? 💡
 
-La plataforma buscar tener un user flow bastante simple para lograr ventas rápidas ¡Chequea el link para que veas como funciona!
+La plataforma busca tener un user flow bastante simple para lograr ventas rápidas ¡Chequea el link para que veas como funciona!
 ```
 https://drive.google.com/file/d/1rgUsY3KukHGCjJbp5UNhksrzErJRGmvz/view?usp=sharing
 ```
@@ -43,11 +43,11 @@ npm start
 
 ## Arquitectura 🦴
 
-El proyecto se encuentra divido en componentes que se visualizan, y cotenedores que manejan toda la lógica y datos que van a pasar a través de props a sus componentes hijos.
+El proyecto se encuentra divido en componentes que se visualizan, y cotenedores que manejan la lógica y los datos que van a transferir a través de props a sus componentes hijos.
 
-Existen 4 Containers que manejan toda la lógica de la página:
+Existen 4 containers que manejan toda la lógica de la página:
 
-* ItemListContainer.js => El cuál renderiza tantas cards como items el cual retornan de una promesa fetch a la base de datos de Firebase. Dicho contenedor es utilizado para imprimirse en 2 componentes:
+* ItemListContainer.js => El cuál renderiza tantas cards como items que son retornados de una promesa fetch a la base de datos de Firebase. Dicho contenedor es utilizado para imprimirse en 2 componentes:
     1️⃣ En la home, donde se renderiza TODOS los productos de la base de datos.
     2️⃣ En la sección por categoría, donde solo renderiza los productos de determinada categoría. La categoría es adquirida a traves del hook useParams.
 

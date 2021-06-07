@@ -1,11 +1,14 @@
+//Importamos React
 import React from "react";
+
+//Importamos componentes de bootstrap
 import { Container, Row } from "react-bootstrap";
+
+//Importamos css
 import "./Footer.css";
 
 
 export default function Footer() {
-
-  // Atención: Use href porque cuando usaba History o Link me mandaba dentro de localhost.
 
   return (
     <footer style={{position: 'sticky', bottom: 0}}>
