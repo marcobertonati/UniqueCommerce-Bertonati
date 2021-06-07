@@ -4,7 +4,7 @@ _UNIQUE es una plataforma e-commerce que busca ayudar a causas benéficas y a su
 
 ## ¿Cómo funciona? 💡
 
-La plataforma buscar tener un user flow bastante simple para lograr una ventas rápida ¡Chequea los links para que veas como funciona!
+La plataforma buscar tener un user flow bastante simple para lograr ventas rápidas ¡Chequea el link para que veas como funciona!
 ```
 https://drive.google.com/file/d/1rgUsY3KukHGCjJbp5UNhksrzErJRGmvz/view?usp=sharing
 ```
@@ -13,7 +13,7 @@ https://drive.google.com/file/d/1rgUsY3KukHGCjJbp5UNhksrzErJRGmvz/view?usp=shari
 
 El desarrollo de la web es enteramente a partir de ReactJS. A su vez, consume el módulo de react-bootstrap 1.5.2 para fines estéticos y de organización visual. En un futuro se planea eliminar los componentes standard, como por ejemplo los botones, y desarrollar propios que respondan al branding de la marca UNIQUE.
 
-También se ha optado por utilizar emojis en la mayoría de las casos. Esto a manejar de que la página cargue lo más rápido posible ya que cuando se comiencen a acumular productos puede romper con nuestra misión de realizar compras rápidas.
+También se ha optado por utilizar emojis en la mayoría de las casos. Esto para que la página cargue lo más rápido posible ya que cuando se comiencen a acumular productos puede romper con nuestra misión de realizar ventas rápidas.
 
 ## Reminder de como visualizar el proyecto 💻
 
@@ -47,7 +47,7 @@ El proyecto se encuentra divido en componentes que se visualizan, y cotenedores 
 
 Existen 4 Containers que manejan toda la lógica de la página:
 
-* ItemListContainer.js => El cuál renderiza tantas cards como items el cual retornan de una promesa fetch al la base de datos de Firebase. Dicho contenedor es utilizado para imprimirse en 2 componentes:
+* ItemListContainer.js => El cuál renderiza tantas cards como items el cual retornan de una promesa fetch a la base de datos de Firebase. Dicho contenedor es utilizado para imprimirse en 2 componentes:
     1️⃣ En la home, donde se renderiza TODOS los productos de la base de datos.
     2️⃣ En la sección por categoría, donde solo renderiza los productos de determinada categoría. La categoría es adquirida a traves del hook useParams.
 
