@@ -2,6 +2,8 @@
 
 _UNIQUE es una plataforma e-commerce que ayuda a causas benéficas y a sus vendedores. Buscar vender aquellos productos que consideramos únicos ¿Y cómo ponerle precio a lo único? No es nada fácil._
 
+Deployed: https://unique-commerce-bertonatimarco.herokuapp.com/
+
 ## ¿Cómo funciona? 💡
 
 La plataforma busca tener un user flow bastante simple para lograr ventas rápidas ¡Chequea el link para que veas como funciona!
